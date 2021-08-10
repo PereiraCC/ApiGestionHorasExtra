@@ -1,0 +1,13 @@
+C:\Users\PereiraCoto\Documents\Personal\Cuatrimestre\Sitios\Proyecto\Avance 2\ApiGestionHorasExtra\Negocios\bin\Debug\Negocios.dll
+C:\Users\PereiraCoto\Documents\Personal\Cuatrimestre\Sitios\Proyecto\Avance 2\ApiGestionHorasExtra\Negocios\bin\Debug\Negocios.pdb
+C:\Users\PereiraCoto\Documents\Personal\Cuatrimestre\Sitios\Proyecto\Avance 2\ApiGestionHorasExtra\Negocios\bin\Debug\Datos.dll
+C:\Users\PereiraCoto\Documents\Personal\Cuatrimestre\Sitios\Proyecto\Avance 2\ApiGestionHorasExtra\Negocios\bin\Debug\EntityFramework.dll
+C:\Users\PereiraCoto\Documents\Personal\Cuatrimestre\Sitios\Proyecto\Avance 2\ApiGestionHorasExtra\Negocios\bin\Debug\Datos.pdb
+C:\Users\PereiraCoto\Documents\Personal\Cuatrimestre\Sitios\Proyecto\Avance 2\ApiGestionHorasExtra\Negocios\bin\Debug\Datos.dll.config
+C:\Users\PereiraCoto\Documents\Personal\Cuatrimestre\Sitios\Proyecto\Avance 2\ApiGestionHorasExtra\Negocios\bin\Debug\EntityFramework.xml
+C:\Users\PereiraCoto\Documents\Personal\Cuatrimestre\Sitios\Proyecto\Avance 2\ApiGestionHorasExtra\Negocios\obj\Debug\Negocios.csprojAssemblyReference.cache
+C:\Users\PereiraCoto\Documents\Personal\Cuatrimestre\Sitios\Proyecto\Avance 2\ApiGestionHorasExtra\Negocios\obj\Debug\Negocios.csproj.CoreCompileInputs.cache
+C:\Users\PereiraCoto\Documents\Personal\Cuatrimestre\Sitios\Proyecto\Avance 2\ApiGestionHorasExtra\Negocios\obj\Debug\Negocios.csproj.CopyComplete
+C:\Users\PereiraCoto\Documents\Personal\Cuatrimestre\Sitios\Proyecto\Avance 2\ApiGestionHorasExtra\Negocios\obj\Debug\Negocios.dll
+C:\Users\PereiraCoto\Documents\Personal\Cuatrimestre\Sitios\Proyecto\Avance 2\ApiGestionHorasExtra\Negocios\obj\Debug\Negocios.pdb
+C:\Users\PereiraCoto\Documents\Personal\Cuatrimestre\Sitios\Proyecto\Avance 2\ApiGestionHorasExtra\Negocios\bin\Debug\Negocios.dll.config

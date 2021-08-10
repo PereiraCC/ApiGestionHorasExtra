@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="25c6e4c99831492fa7903d5426def012" Name="Diagram1">
+        <EntityTypeShape EntityType="HorasExtraModel.DEPARTAMENTOS" Width="1.5" PointX="3" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="HorasExtraModel.EVIDENCIAS" Width="1.5" PointX="9.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HorasExtraModel.FORMULARIOS_AVALADOS" Width="1.5" PointX="9.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="HorasExtraModel.FORMULARIOS_PAGO" Width="1.5" PointX="14.25" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HorasExtraModel.FORMULARIOS_TIEMPO" Width="1.5" PointX="12" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HorasExtraModel.JORNADAS" Width="1.5" PointX="0.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="HorasExtraModel.PAGOS" Width="1.5" PointX="16.5" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HorasExtraModel.PERSONAS" Width="1.5" PointX="5.25" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HorasExtraModel.SOLICITUD_TAREAS" Width="1.5" PointX="7.5" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HorasExtraModel.TIPOSPAGO" Width="1.5" PointX="14.25" PointY="1.625" IsExpanded="true" />
+        <AssociationConnector Association="HorasExtraModel.FK_DepartamentoJornada" ManuallyRouted="false" />
+        <AssociationConnector Association="HorasExtraModel.FK_PersonaDepartamento" ManuallyRouted="false" />
+        <AssociationConnector Association="HorasExtraModel.FK_EvidenciaSolicitud" ManuallyRouted="false" />
+        <AssociationConnector Association="HorasExtraModel.FK_FormulariosAvaladosSolicitud" ManuallyRouted="false" />
+        <AssociationConnector Association="HorasExtraModel.FK_FormularioTiempoFormularioAprobacion" ManuallyRouted="false" />
+        <AssociationConnector Association="HorasExtraModel.FK_FormularioPagoFormularioTiempo" ManuallyRouted="false" />
+        <AssociationConnector Association="HorasExtraModel.FK_PagoFormularioPago" ManuallyRouted="false" />
+        <AssociationConnector Association="HorasExtraModel.FK_PagoTipoPago" ManuallyRouted="false" />
+        <AssociationConnector Association="HorasExtraModel.FK_SolicitudPersona" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -12,7 +12,7 @@ namespace Negocios.Clases
     public class Users
     {
         private Persona usuario = new Persona();
-        //private InicioSesion inicioSesion = new InicioSesion();
+        private InicioSesion inicioSesion = new InicioSesion();
 
         private string ValidarPersonaRegistro(PersonaModel persona)
         {
@@ -170,58 +170,59 @@ namespace Negocios.Clases
             }
         }
 
-        //public string ValidarInicioSesion(PersonaModel persona)
-        //{
-        //    try
-        //    {
-        //        string resp = ValidarPersonaDatosInicioSesion(persona);
-        //        if (resp.Equals("1"))
-        //        {
+        public string ValidarInicioSesion(PersonaModel persona)
+        {
+            try
+            {
+                string resp = ValidarPersonaDatosInicioSesion(persona);
+                if (resp.Equals("1"))
+                {
 
-        //            string clave = inicioSesion.ValidarInicioSesion(persona);
-        //            if (!clave.Equals("0"))
-        //            {
-        //                return "1," + clave;
-        //            }
-        //            else if (clave.Equals("0"))
-        //            {
-        //                return "0,Usuario y/o contraseña incorrectos.";
-        //            }
-        //            else
-        //            {
-        //                return "0," + clave;
-        //            }
-        //        }
-        //        else
-        //        {
-        //            return "0," + resp;
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw ex;
-        //    }
-        //}
+                    string clave = inicioSesion.ValidarInicioSesion(persona);
+                    if (clave.Equals("1"))
+                    {
+                        PersonaModel p = usuario.BuscarPersona(persona.email);
+                        return "1," + p.nombreCompleto + "," + p.email + "," + p.departamento;
+                    }
+                    else if (clave.Equals("Datos incorrectos"))
+                    {
+                        return "0,Usuario y/o contraseña incorrectos.";
+                    }
+                    else
+                    {
+                        return "0,El usuario no existe";
+                    }
+                }
+                else
+                {
+                    return "0," + resp;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
-        //public string CerrarSesion(string email)
-        //{
-        //    try
-        //    {
-        //        string resp = ValidarUsuarioInicioSesion(email);
-        //        if (resp.Equals("1"))
-        //        {
-        //            return inicioSesion.CerrarSesion(email);
-        //        }
-        //        else
-        //        {
-        //            return resp;
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw ex;
-        //    }
-        //}
+        public string CerrarSesion(string email)
+        {
+            try
+            {
+                string resp = ValidarUsuarioInicioSesion(email);
+                if (resp.Equals("1"))
+                {
+                    return inicioSesion.CerrarSesion(email);
+                }
+                else
+                {
+                    return resp;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
     }
 

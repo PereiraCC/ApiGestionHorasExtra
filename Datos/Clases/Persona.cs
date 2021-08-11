@@ -162,7 +162,7 @@ namespace Datos.Clases
             }
         }
 
-        public List<PERSONAS> BuscarPersona(string email)
+        public PersonaModel BuscarPersona(string email)
         {
             try
             {
@@ -170,7 +170,22 @@ namespace Datos.Clases
                             where c.Email == email
                             select c;
 
-                return query.ToList<PERSONAS>();
+                List<PERSONAS> user = query.ToList<PERSONAS>();
+
+                foreach (PERSONAS u in user)
+                {
+                    if (u.Email == email)
+                    {
+                        return new PersonaModel()
+                        {
+                            nombreCompleto = u.NombreCompleto,
+                            email = u.Email,
+                            departamento = departamento.getNombreDepartamento(u.idDepartamento)
+                        };
+                    }
+                }
+
+                return null;
             }
             catch (Exception ex)
             {

@@ -41,5 +41,31 @@ namespace Datos.Clases
                 throw ex;
             }
         }
+
+        public string getNombreDepartamento(int id)
+        {
+            try
+            {
+                var query = from c in entities.DEPARTAMENTOS
+                            where c.idDepartamento == id
+                            select c;
+
+                List<DEPARTAMENTOS> depar = query.ToList<DEPARTAMENTOS>();
+
+                foreach (DEPARTAMENTOS d in depar)
+                {
+                    if (d.idDepartamento == id)
+                    {
+                        return d.Descripcion;
+                    }
+                }
+
+                return null;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

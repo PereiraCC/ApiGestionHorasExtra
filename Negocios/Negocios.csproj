@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Clases\AvaladosFormularios.cs" />
     <Compile Include="Clases\Evidencias.cs" />
+    <Compile Include="Clases\PagoFormulario.cs" />
     <Compile Include="Clases\Task.cs" />
     <Compile Include="Clases\TiempoFormulario.cs" />
     <Compile Include="Clases\Users.cs" />

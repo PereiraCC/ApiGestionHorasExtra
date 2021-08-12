@@ -8,23 +8,25 @@ using Datos.Clases;
 
 namespace Negocios.Clases
 {
-    public class TiempoFormulario
+    public class PagoFormulario
     {
+        private FormularioPago pago = new FormularioPago();
         private FormularioTiempo tiempo = new FormularioTiempo();
 
-        public string CrearTarea(string email,  string movtivo, int hora, string quincena)
+        public string CrearTarea(string email, string movtivo, string monto, string descripcion)
         {
             try
             {
-                if (tiempo.obternerFormularioTiempo(email,movtivo).Count !=0)
+                if (pago.obternerFormularioPago(email, movtivo).Count != 0)
                 {
-                    int idpersona = tiempo.idFormularioAvalado(email,movtivo);
-                    string res = tiempo.CrearFormularioTiempo(email,movtivo, new FORMULARIOS_TIEMPO()
+                    int idTiempo = tiempo.obterneridFormularioTiempo(email, movtivo);
+                    string res = pago.CrearFormularioPago(email, movtivo, new FORMULARIOS_PAGO()
                     {
-                       idFormularioAvalado=idpersona,
-                       HorasValidas=hora,
-                       QUINCENA = quincena
-                    });
+                        idFormularioTiempo = idTiempo,
+                        Descripcion= descripcion,
+                        Monto= monto
+
+                    }); 
 
                     if (res.Equals("1"))
                     {
@@ -51,12 +53,12 @@ namespace Negocios.Clases
             }
         }
 
-        public List<FORMULARIOS_TIEMPO> obtenerListaTareaPorPersona(string email, string motivo)
+        public List<FORMULARIOS_PAGO> obtenerListaTareaPorPersona(string email, string motivo)
         {
             try
             {
-                List<FORMULARIOS_TIEMPO> lista = new List<FORMULARIOS_TIEMPO>();
-                lista = tiempo.obternerFormularioTiempo(email,motivo);
+                List<FORMULARIOS_PAGO> lista = new List<FORMULARIOS_PAGO>();
+                lista = pago.obternerFormularioPago(email, motivo);
 
                 return lista;
 
@@ -67,6 +69,5 @@ namespace Negocios.Clases
                 throw ex;
             }
         }
-
     }
 }

@@ -84,7 +84,35 @@ namespace Datos.Clases
 
         }
 
-        public List<FORMULARIOS_TIEMPO> obternerFormularioEvidencia(string email, string motivo)
+        public int obterneridFormularioTiempo(string email, string motivo)
+        {
+            try
+            {
+                int id = idFormularioAvalado(email, motivo);
+
+                List<FORMULARIOS_TIEMPO> model = new List<FORMULARIOS_TIEMPO>();
+                var query = from c in entities.FORMULARIOS_TIEMPO
+                            where c.idFormularioAvalado == id
+                            select c;
+                model = query.ToList<FORMULARIOS_TIEMPO>();
+                int id1 = 0;
+                foreach(FORMULARIOS_TIEMPO t in model)
+                {
+                    id1 = t.idFormularioTiempo;
+
+                }
+                return id1;
+
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        public List<FORMULARIOS_TIEMPO> obternerFormularioTiempo(string email,string motivo)
         {
             try
             {

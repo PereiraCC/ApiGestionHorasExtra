@@ -19,6 +19,33 @@ namespace Datos.Clases
             
         }
 
+        public int idTarea(string motivo)
+        {
+            try
+            {
+                var query = from c in entities.TareaPersona
+                            where c.Motivo == motivo
+                            select c;
+
+                List<TareaPersona> temp = query.ToList<TareaPersona>();
+
+              
+                    int id = 0;
+                    foreach(TareaPersona t in temp)
+                    {
+                        id = t.idSolicitud;
+                    }
+                    return id;
+               
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
         public string CrearTarea(string email, SOLICITUD_TAREAS tarea)
         {
             try

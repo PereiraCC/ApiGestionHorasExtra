@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Clases\Departamentos.cs" />
+    <Compile Include="Clases\FormulariosAvalados.cs" />
     <Compile Include="Clases\InicioSesion.cs" />
     <Compile Include="Clases\Persona.cs" />
     <Compile Include="Clases\Tarea.cs" />

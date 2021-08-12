@@ -69,7 +69,7 @@ namespace Negocios.Clases
             catch (Exception ex)
             {
 
-                throw;
+                throw ex;
             }
         }
 

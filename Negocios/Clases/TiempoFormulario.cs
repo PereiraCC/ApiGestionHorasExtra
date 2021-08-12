@@ -8,24 +8,22 @@ using Datos.Clases;
 
 namespace Negocios.Clases
 {
-    public class Evidencias
+    public class TiempoFormulario
     {
-        private Evidencia evi = new Datos.Clases.Evidencia();
-        private Tarea Tarea = new Tarea();
+        private FormularioTiempo tiempo = new FormularioTiempo();
 
-        public string CrearFormularioAvalado(string motivo, DateTime envio, DateTime horafin, DateTime horaini, string ruta, bool estado)
+        public string CrearTarea(string email,  string movtivo, int hora, string quincena)
         {
             try
             {
-                if (Tarea.idTarea(motivo) != 0)
+                if (tiempo.obternerFormularioEvidencia(email,movtivo).Count !=0)
                 {
-                    int idpersona = Tarea.idTarea(motivo);
-                    string res = evi.CrearEvidencia(motivo, new EVIDENCIAS()
+                    int idpersona = tiempo.idFormularioAvalado(email,movtivo);
+                    string res = tiempo.CrearFormularioTiempo(email,movtivo, new FORMULARIOS_TIEMPO()
                     {
-                        idSolicitud = idpersona,
-                        RutaDocumento=ruta,
-                        HoraFinal = horafin,
-                        HoraInicial = horaini,
+                       idFormularioAvalado=idpersona,
+                       HorasValidas=hora,
+                       QUINCENA = quincena
                     });
 
                     if (res.Equals("1"))
@@ -40,7 +38,7 @@ namespace Negocios.Clases
                 }
                 else
                 {
-                    return "Tarea no existe";
+                    return "La persona no existe";
                 }
 
 
@@ -53,12 +51,12 @@ namespace Negocios.Clases
             }
         }
 
-        public List<EVIDENCIAS> obtenerListaTareaPorPersona(string email)
+        public List<FORMULARIOS_TIEMPO> obtenerListaTareaPorPersona(string email, string motivo)
         {
             try
             {
-                List<EVIDENCIAS> lista = new List<EVIDENCIAS>();
-                lista = evi.obternerFormularioEvidencia(email);
+                List<FORMULARIOS_TIEMPO> lista = new List<FORMULARIOS_TIEMPO>();
+                lista = tiempo.obternerFormularioEvidencia(email,motivo);
 
                 return lista;
 
@@ -69,5 +67,6 @@ namespace Negocios.Clases
                 throw ex;
             }
         }
+
     }
 }

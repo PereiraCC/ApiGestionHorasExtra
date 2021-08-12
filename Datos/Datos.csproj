@@ -53,6 +53,7 @@
     <Compile Include="Clases\Departamentos.cs" />
     <Compile Include="Clases\Evidencia.cs" />
     <Compile Include="Clases\FormulariosAvalados.cs" />
+    <Compile Include="Clases\FormularioTiempo.cs" />
     <Compile Include="Clases\InicioSesion.cs" />
     <Compile Include="Clases\Persona.cs" />
     <Compile Include="Clases\Tarea.cs" />
@@ -98,6 +99,9 @@
     </Compile>
     <Compile Include="Models\ModelTarea.cs" />
     <Compile Include="Models\PersonaModel.cs" />
+    <Compile Include="ObtenerFormularioAvaladoTiempo.cs">
+      <DependentUpon>HorasExtraEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="PAGOS.cs">
       <DependentUpon>HorasExtraEntities.tt</DependentUpon>
     </Compile>

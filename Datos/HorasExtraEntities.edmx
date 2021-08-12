@@ -133,6 +133,20 @@ advertencia 6002: La tabla o vista 'devHorasExtra.dbo.FormulariosSolcitudPersona
           <Property Name="Estado" Type="bit" Nullable="false" />
         </EntityType>
         <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'devHorasExtra.dbo.ObtenerFormularioAvaladoTiempo' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="ObtenerFormularioAvaladoTiempo">
+          <Key>
+            <PropertyRef Name="Email" />
+            <PropertyRef Name="Motivo" />
+            <PropertyRef Name="idSolicitud" />
+            <PropertyRef Name="idFormularioAvalado" />
+          </Key>
+          <Property Name="Email" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Motivo" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="idSolicitud" Type="int" Nullable="false" />
+          <Property Name="idFormularioAvalado" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'devHorasExtra.dbo.TareaPersona' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="TareaPersona">
           <Key>
@@ -292,6 +306,14 @@ advertencia 6002: La tabla o vista 'devHorasExtra.dbo.TareaPersona' no tiene def
     [FormulariosSolcitudPersona].[Motivo] AS [Motivo], 
     [FormulariosSolcitudPersona].[Estado] AS [Estado]
     FROM [dbo].[FormulariosSolcitudPersona] AS [FormulariosSolcitudPersona]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ObtenerFormularioAvaladoTiempo" EntityType="Self.ObtenerFormularioAvaladoTiempo" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ObtenerFormularioAvaladoTiempo].[Email] AS [Email], 
+    [ObtenerFormularioAvaladoTiempo].[Motivo] AS [Motivo], 
+    [ObtenerFormularioAvaladoTiempo].[idSolicitud] AS [idSolicitud], 
+    [ObtenerFormularioAvaladoTiempo].[idFormularioAvalado] AS [idFormularioAvalado]
+    FROM [dbo].[ObtenerFormularioAvaladoTiempo] AS [ObtenerFormularioAvaladoTiempo]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="TareaPersona" EntityType="Self.TareaPersona" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -618,6 +640,7 @@ advertencia 6002: La tabla o vista 'devHorasExtra.dbo.TareaPersona' no tiene def
           <EntitySet Name="TareaPersona" EntityType="HorasExtraModel.TareaPersona" />
           <EntitySet Name="FormulariosSolcitudPersona" EntityType="HorasExtraModel.FormulariosSolcitudPersona" />
           <EntitySet Name="DocumentosEvidencias" EntityType="HorasExtraModel.DocumentosEvidencias" />
+          <EntitySet Name="ObtenerFormularioAvaladoTiempo" EntityType="HorasExtraModel.ObtenerFormularioAvaladoTiempo" />
         </EntityContainer>
         <EntityType Name="TareaPersona">
           <Key>
@@ -668,6 +691,18 @@ advertencia 6002: La tabla o vista 'devHorasExtra.dbo.TareaPersona' no tiene def
           <Property Name="idSolicitud" Type="Int32" Nullable="false" />
           <Property Name="RutaDocumento" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ObtenerFormularioAvaladoTiempo">
+          <Key>
+            <PropertyRef Name="Email" />
+            <PropertyRef Name="Motivo" />
+            <PropertyRef Name="idSolicitud" />
+            <PropertyRef Name="idFormularioAvalado" />
+          </Key>
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Motivo" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="idSolicitud" Type="Int32" Nullable="false" />
+          <Property Name="idFormularioAvalado" Type="Int32" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -814,6 +849,16 @@ advertencia 6002: La tabla o vista 'devHorasExtra.dbo.TareaPersona' no tiene def
                 <ScalarProperty Name="RutaDocumento" ColumnName="RutaDocumento" />
                 <ScalarProperty Name="idSolicitud" ColumnName="idSolicitud" />
                 <ScalarProperty Name="idEvidencia" ColumnName="idEvidencia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ObtenerFormularioAvaladoTiempo">
+            <EntityTypeMapping TypeName="HorasExtraModel.ObtenerFormularioAvaladoTiempo">
+              <MappingFragment StoreEntitySet="ObtenerFormularioAvaladoTiempo">
+                <ScalarProperty Name="idFormularioAvalado" ColumnName="idFormularioAvalado" />
+                <ScalarProperty Name="idSolicitud" ColumnName="idSolicitud" />
+                <ScalarProperty Name="Motivo" ColumnName="Motivo" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

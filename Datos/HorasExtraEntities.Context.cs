@@ -38,5 +38,6 @@ namespace Datos
         public virtual DbSet<TareaPersona> TareaPersona { get; set; }
         public virtual DbSet<FormulariosSolcitudPersona> FormulariosSolcitudPersona { get; set; }
         public virtual DbSet<DocumentosEvidencias> DocumentosEvidencias { get; set; }
+        public virtual DbSet<ObtenerFormularioAvaladoTiempo> ObtenerFormularioAvaladoTiempo { get; set; }
     }
 }

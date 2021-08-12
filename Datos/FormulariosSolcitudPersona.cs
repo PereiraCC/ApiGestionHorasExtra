@@ -12,14 +12,13 @@ namespace Datos
     using System;
     using System.Collections.Generic;
     
-    public partial class PAGOS
+    public partial class FormulariosSolcitudPersona
     {
-        public int idPago { get; set; }
-        public int idFormularioPago { get; set; }
-        public int idTipoPago { get; set; }
-        public string Monto { get; set; }
-    
-        public virtual FORMULARIOS_PAGO FORMULARIOS_PAGO { get; set; }
-        public virtual TIPOSPAGO TIPOSPAGO { get; set; }
+        public string Email { get; set; }
+        public string NombreCompleto { get; set; }
+        public int idFormularioAvalado { get; set; }
+        public System.DateTime FechaEnvio { get; set; }
+        public string Motivo { get; set; }
+        public bool Estado { get; set; }
     }
 }

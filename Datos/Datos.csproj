@@ -58,7 +58,13 @@
     <Compile Include="DEPARTAMENTOS.cs">
       <DependentUpon>HorasExtraEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="DocumentosEvidencias.cs">
+      <DependentUpon>HorasExtraEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="EVIDENCIAS.cs">
+      <DependentUpon>HorasExtraEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FormulariosSolcitudPersona.cs">
       <DependentUpon>HorasExtraEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="FORMULARIOS_AVALADOS.cs">
@@ -88,6 +94,7 @@
     <Compile Include="JORNADAS.cs">
       <DependentUpon>HorasExtraEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ModelTarea.cs" />
     <Compile Include="Models\PersonaModel.cs" />
     <Compile Include="PAGOS.cs">
       <DependentUpon>HorasExtraEntities.tt</DependentUpon>
@@ -97,6 +104,9 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SOLICITUD_TAREAS.cs">
+      <DependentUpon>HorasExtraEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TareaPersona.cs">
       <DependentUpon>HorasExtraEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="TIPOSPAGO.cs">

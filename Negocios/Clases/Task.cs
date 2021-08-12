@@ -1,90 +1,78 @@
-﻿//using Datos;
-//using Datos.Clases;
-//using System;
-//using System.Collections.Generic;
-//using System.Linq;
-//using System.Text;
-//using System.Threading.Tasks;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Datos.Clases;
+using Datos;
+using Datos.Models;
 
-//namespace Negocios.Clases
-//{
-//    public class CTask
-//    {
-//        private Tarea tarea;
+namespace Negocios.Clases
+{
+    public class Task
+    {
+        private Tarea tarea = new Tarea();
+        private Persona persona = new Persona();
 
-//        public CTask()
-//        {
-//            tarea = new Tarea();
-//        }
+        public string CrearTarea(string email,DateTime fecha, DateTime salida, DateTime entrada, string movtivo, int hora, bool estado )
+        {
+            try
+            {
+                if(persona.ExistePersona(email))
+                {
+                    int idpersona = persona.getIdPersona(email);
+                    string res = tarea.CrearTarea(email,new SOLICITUD_TAREAS()
+                    {
+                        Entrada=entrada,
+                        Salida=salida,
+                        Estado= estado,
+                        Fecha= fecha,
+                        idPersona= idpersona,
+                        Motivo=movtivo,
+                        TotalHoras=hora
+                    });
 
-//        private string validarTarea(string descripcion)
-//        {
-//            try
-//            {
-//                if (!Validaciones.ValidarNulos(descripcion))
-//                {
-//                    if (!Validaciones.validarCaracteresEspeciales(descripcion))
-//                    {
-//                        if (!Validaciones.validarKeyWords(descripcion))
-//                        {
-//                            return "1";
-//                        }
-//                        else
-//                        {
-//                            return "Los datos contienen informacion invalida.";
-//                        }
-//                    }
-//                    else
-//                    {
-//                        return "La descripcion de la tarea tiene un formato invalido";
-//                    }
-//                }
-//                else
-//                {
-//                    return "El campo de descripcion de la tarea es Obligatorio";
-//                }
-//            }
-//            catch(Exception ex)
-//            {
-//                throw ex;
-//            }
-//        }
+                    if(res.Equals("1"))
+                    {
+                        return res;
+                    }
+                    else
+                    {
+                        return res;
+                    }
 
-//        public string crearTarea(TAREAS t)
-//        {
-//            try
-//            {
-//                string resp = validarTarea(t.Descripcion);
-//                if (resp.Equals("1"))
-//                {
-//                    if (!tarea.ExisteTarea(t.Descripcion))
-//                    {
-//                        int res = tarea.crearTarea(t);
+                }
+                else
+                {
+                    return "La persona no existe";
+                }
 
-//                        if (res == 1)
-//                        {
-//                            return "1";
-//                        }
-//                        else
-//                        {
-//                            return "0";
-//                        }
-//                    }
-//                    else
-//                    {
-//                        return "Tarea Existe";
-//                    }
-//                }
-//                else
-//                {
-//                    return resp;
-//                }
+                
 
-//            }
-//            catch (Exception ex)
-//            {
-//                throw ex;
-//            }
-//        }
-//    }
-//}
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        public List<ModelTarea> obtenerListaTareaPorPersona(string email)
+        {
+            try
+            {
+                List<ModelTarea> lista = new List<ModelTarea>();
+                lista = tarea.obternerTareaPersona(email);
+
+                return lista;
+
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+        }
+
+    }
+}

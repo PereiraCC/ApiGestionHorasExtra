@@ -3,87 +3,134 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Datos.Models;
+
 
 namespace Datos.Clases
 {
     public class Tarea
     {
         private HorasExtraEntities entities;
+        public Persona persona = new Persona();
 
         public Tarea()
         {
             entities = new HorasExtraEntities();
+            
         }
 
-        //        public bool ExisteTarea(string descripcion)
-        //        {
-        //            try
-        //            {
-        //                var query = from c in entities.TAREAS
-        //                            where c.Descripcion == descripcion
-        //                            select c;
+        public string CrearTarea(string email, SOLICITUD_TAREAS tarea)
+        {
+            try
+            {
+                if (persona.ExistePersona(email))
+                {                    
+                    try
+                    {
+                       entities.SOLICITUD_TAREAS.Add(tarea);
+                        int res = entities.SaveChanges();
+                        if (res==1)
+                        {
+                            return "1";
+                        }
+                        else
+                        {
+                            return "0";
+                        }
+                    }
+                    catch (Exception ex)
+                    {
 
-        //                List<TAREAS> user = query.ToList<TAREAS>();
+                        throw ex;
+                    }
 
-        //                if (user.Count > 0)
-        //                {
-        //                    return true;
-        //                }
-        //                else
-        //                {
-        //                    return false;
-        //                }
+                }
+                else
+                {
+                    return "Persona no existe";
 
-        //            }
-        //            catch (Exception ex)
-        //            {
-        //                throw ex;
-        //            }
-        //        }
+                }
+                
+            }
+            catch (Exception ex)
+            {
 
-        //        public int getIDTarea(string descripcion)
-        //        {
-        //            try
-        //            {
-        //                var query = from c in entities.TAREAS
-        //                            where c.Descripcion == descripcion
-        //                            select c;
+                throw ex;
+            }
 
-        //                List<TAREAS> tareas = query.ToList<TAREAS>();
+        }
 
-        //                foreach(TAREAS t in tareas)
-        //                {
-        //                    if (t.Descripcion.Equals(descripcion))
-        //                    {
-        //                        return t.idTarea;
-        //                    }
-        //                }
+        public bool ExisteTareaPersona(string email)
+        {
+            try
+            {
+                var query = from c in entities.TareaPersona
+                            where c.Email == email
+                            select c;
+                List<TareaPersona> tarea = query.ToList<TareaPersona>();
 
-        //                return 0;
+                if (tarea.Count==0)
+                {
+                    return false;
+                }
+                {
+                    return true;
+                }
 
-        //            }
-        //            catch (Exception ex)
-        //            {
-        //                throw ex;
-        //            }
-        //        }
+            }
+            catch (Exception ex)
+            {
 
-        //        public int crearTarea(TAREAS tarea)
-        //        {
-        //            try
-        //            {
-        //                entities.TAREAS.Add(tarea);
-        //                return entities.SaveChanges();
-
-        //            }
-        //            catch (Exception ex)
-        //            {
-        //                throw ex;
-        //            }
-
-        //        }
+                throw ex;
+            }
+        }
 
 
+
+       
+        public List<ModelTarea> obternerTareaPersona(string email)
+        {
+            try
+            {
+                if (ExisteTareaPersona(email))
+                {
+                    List<ModelTarea> model = new List<ModelTarea>();
+                    var query = from c in entities.TareaPersona
+                                where c.Email == email
+                                select c;
+                    List<TareaPersona> tarea = query.ToList<TareaPersona>();
+
+                    foreach (TareaPersona temp in tarea)
+                    {
+                        ModelTarea r = new ModelTarea();
+                        r.email = temp.Email;
+                        r.Nombre = temp.NombreCompleto;
+                        r.idSolicitud = temp.idSolicitud;
+                        r.entrada = temp.Entrada;
+                        r.Salida = temp.Salida;
+                        r.Fecha = temp.Fecha;
+                        r.Horas = temp.TotalHoras;
+                        r.Estado = temp.Estado;
+
+                        model.Add(r);
+
+                    }
+
+                    return model;
+                }
+                else
+                {
+                    List<ModelTarea> model = new List<ModelTarea>();
+
+                    return model;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
 
     }
 }

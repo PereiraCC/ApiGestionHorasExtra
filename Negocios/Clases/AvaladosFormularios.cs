@@ -13,7 +13,7 @@ namespace Negocios.Clases
         private FormulariosAvalados tarea = new FormulariosAvalados();
         private Tarea persona = new Tarea();
 
-        public string CrearTarea(string motivo, DateTime envio, string mes, int hora, string ruta,bool estado)
+        public string CrearFormularioAvalado(string motivo, DateTime envio, string mes, int hora, string ruta,bool estado)
         {
             try
             {

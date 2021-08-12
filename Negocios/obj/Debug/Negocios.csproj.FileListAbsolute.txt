@@ -11,3 +11,16 @@ C:\Users\PereiraCoto\Documents\Personal\Cuatrimestre\Sitios\Proyecto\Avance 2\Ap
 C:\Users\PereiraCoto\Documents\Personal\Cuatrimestre\Sitios\Proyecto\Avance 2\ApiGestionHorasExtra\Negocios\obj\Debug\Negocios.dll
 C:\Users\PereiraCoto\Documents\Personal\Cuatrimestre\Sitios\Proyecto\Avance 2\ApiGestionHorasExtra\Negocios\obj\Debug\Negocios.pdb
 C:\Users\PereiraCoto\Documents\Personal\Cuatrimestre\Sitios\Proyecto\Avance 2\ApiGestionHorasExtra\Negocios\bin\Debug\Negocios.dll.config
+C:\Users\Alberto Martínez\OneDrive - Palantir S.A\Documentos\Cursos\Sitios Web\ApiGestionHorasExtra\Negocios\bin\Debug\Negocios.dll.config
+C:\Users\Alberto Martínez\OneDrive - Palantir S.A\Documentos\Cursos\Sitios Web\ApiGestionHorasExtra\Negocios\bin\Debug\Negocios.dll
+C:\Users\Alberto Martínez\OneDrive - Palantir S.A\Documentos\Cursos\Sitios Web\ApiGestionHorasExtra\Negocios\bin\Debug\Negocios.pdb
+C:\Users\Alberto Martínez\OneDrive - Palantir S.A\Documentos\Cursos\Sitios Web\ApiGestionHorasExtra\Negocios\bin\Debug\Datos.dll
+C:\Users\Alberto Martínez\OneDrive - Palantir S.A\Documentos\Cursos\Sitios Web\ApiGestionHorasExtra\Negocios\bin\Debug\EntityFramework.dll
+C:\Users\Alberto Martínez\OneDrive - Palantir S.A\Documentos\Cursos\Sitios Web\ApiGestionHorasExtra\Negocios\bin\Debug\Datos.pdb
+C:\Users\Alberto Martínez\OneDrive - Palantir S.A\Documentos\Cursos\Sitios Web\ApiGestionHorasExtra\Negocios\bin\Debug\Datos.dll.config
+C:\Users\Alberto Martínez\OneDrive - Palantir S.A\Documentos\Cursos\Sitios Web\ApiGestionHorasExtra\Negocios\bin\Debug\EntityFramework.xml
+C:\Users\Alberto Martínez\OneDrive - Palantir S.A\Documentos\Cursos\Sitios Web\ApiGestionHorasExtra\Negocios\obj\Debug\Negocios.csproj.AssemblyReference.cache
+C:\Users\Alberto Martínez\OneDrive - Palantir S.A\Documentos\Cursos\Sitios Web\ApiGestionHorasExtra\Negocios\obj\Debug\Negocios.csproj.CoreCompileInputs.cache
+C:\Users\Alberto Martínez\OneDrive - Palantir S.A\Documentos\Cursos\Sitios Web\ApiGestionHorasExtra\Negocios\obj\Debug\Negocios.csproj.CopyComplete
+C:\Users\Alberto Martínez\OneDrive - Palantir S.A\Documentos\Cursos\Sitios Web\ApiGestionHorasExtra\Negocios\obj\Debug\Negocios.dll
+C:\Users\Alberto Martínez\OneDrive - Palantir S.A\Documentos\Cursos\Sitios Web\ApiGestionHorasExtra\Negocios\obj\Debug\Negocios.pdb

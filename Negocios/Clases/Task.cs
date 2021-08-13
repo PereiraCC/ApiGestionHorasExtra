@@ -9,7 +9,7 @@ using Datos.Models;
 
 namespace Negocios.Clases
 {
-    public class Task
+    public class NegociosTask
     {
         private Tarea tarea = new Tarea();
         private Persona persona = new Persona();
@@ -61,11 +61,13 @@ namespace Negocios.Clases
         {
             try
             {
-                List<ModelTarea> lista = new List<ModelTarea>();
-                lista = tarea.obternerTareaPersona(email);
-
-                return lista;
-
+                if (Validaciones.validarEmail(email))
+                {
+                    return tarea.obternerTareaPersona(email);
+                } else
+                {
+                    return null;
+                }
             }
             catch (Exception ex)
             {

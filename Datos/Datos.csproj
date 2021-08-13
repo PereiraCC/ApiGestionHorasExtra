@@ -99,6 +99,7 @@
     <Compile Include="JORNADAS.cs">
       <DependentUpon>HorasExtraEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ModelCrearFormularioAvalado.cs" />
     <Compile Include="Models\ModelTarea.cs" />
     <Compile Include="Models\PersonaModel.cs" />
     <Compile Include="ObtenerFormularioAvaladoTiempo.cs">

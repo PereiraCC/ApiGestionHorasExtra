@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Datos;
 using Datos.Clases;
+using Datos.Models;
 
 namespace Negocios.Clases
 {
@@ -13,21 +14,21 @@ namespace Negocios.Clases
         private FormulariosAvalados tarea = new FormulariosAvalados();
         private Tarea persona = new Tarea();
 
-        public string CrearFormularioAvalado(string motivo, DateTime envio, string mes, int hora, string ruta,bool estado)
+        public string CrearFormularioAvalado(ModelCrearFormularioAvalado formulario)
         {
             try
             {
-                if (persona.idTarea(motivo)!=0)
+                if (persona.idTarea(formulario.Motivo)!=0)
                 {
-                    int idpersona = persona.idTarea(motivo);
-                    string res = tarea.CrearFormularioAvalado(motivo, new FORMULARIOS_AVALADOS()
+                    int idpersona = persona.idTarea(formulario.Motivo);
+                    string res = tarea.CrearFormularioAvalado(formulario.Motivo, new FORMULARIOS_AVALADOS()
                     {
                         idSolicitud=idpersona,
-                        FechaEnvio=envio,
-                        Mes= mes,
-                        TotalHoras = hora,
-                        RutaArchivo = ruta,
-                        Estado = estado
+                        FechaEnvio= formulario.Envio,
+                        Mes= formulario.Mes,
+                        TotalHoras = formulario.Hora,
+                        RutaArchivo = formulario.Ruta,
+                        Estado = false
                         
                     });
 
@@ -56,7 +57,7 @@ namespace Negocios.Clases
             }
         }
 
-        public List<FormulariosSolcitudPersona> obtenerListaTareaPorPersona(string email)
+        public List<FormulariosSolcitudPersona> obtenerFormulariosAvaladosPorPersona(string email)
         {
             try
             {

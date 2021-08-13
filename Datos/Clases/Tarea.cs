@@ -131,7 +131,7 @@ namespace Datos.Clases
                     {
                         ModelTarea r = new ModelTarea();
                         r.email = temp.Email;
-                        r.Nombre = temp.NombreCompleto;
+                        r.Motivo = temp.Motivo;
                         r.idSolicitud = temp.idSolicitud;
                         r.entrada = temp.Entrada;
                         r.Salida = temp.Salida;

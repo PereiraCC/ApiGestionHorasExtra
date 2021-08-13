@@ -100,8 +100,8 @@
           <Property Name="idTipoPago" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Descripcion" Type="nvarchar" MaxLength="20" Nullable="false" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'devHorasExtra.dbo.DocumentosEvidencias' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'devHorasExtra.dbo.DocumentosEvidencias' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="DocumentosEvidencias">
           <Key>
             <PropertyRef Name="idEvidencia" />
@@ -114,8 +114,8 @@ advertencia 6002: La tabla o vista 'devHorasExtra.dbo.DocumentosEvidencias' no t
           <Property Name="RutaDocumento" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Email" Type="nvarchar" MaxLength="100" Nullable="false" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'devHorasExtra.dbo.FormulariosSolcitudPersona' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'devHorasExtra.dbo.FormulariosSolcitudPersona' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="FormulariosSolcitudPersona">
           <Key>
             <PropertyRef Name="Email" />
@@ -132,8 +132,8 @@ advertencia 6002: La tabla o vista 'devHorasExtra.dbo.FormulariosSolcitudPersona
           <Property Name="Motivo" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Estado" Type="bit" Nullable="false" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'devHorasExtra.dbo.ObtenerFormularioAvaladoTiempo' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'devHorasExtra.dbo.ObtenerFormularioAvaladoTiempo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="ObtenerFormularioAvaladoTiempo">
           <Key>
             <PropertyRef Name="Email" />
@@ -146,8 +146,8 @@ advertencia 6002: La tabla o vista 'devHorasExtra.dbo.ObtenerFormularioAvaladoTi
           <Property Name="idSolicitud" Type="int" Nullable="false" />
           <Property Name="idFormularioAvalado" Type="int" Nullable="false" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'devHorasExtra.dbo.TareaPersona' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'devHorasExtra.dbo.TareaPersona' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="TareaPersona">
           <Key>
             <PropertyRef Name="Email" />

@@ -10,16 +10,16 @@ using System.Web.Http.Description;
 
 namespace ApiHorasExtra.Controllers
 {
-    public class TareasController : ApiController
+    public class FormulariosAvaladosController : ApiController
     {
         // Objeto de clase negocios
-        private NegociosTask db = new NegociosTask();
+        private AvaladosFormularios db = new AvaladosFormularios();
 
-        public List<ModelTarea> GetTareas(string email)
+        public List<FormulariosSolcitudPersona> GetFormulariosAvalados(string email)
         {
             try
             {
-                return db.obtenerListaTareaPorPersona(email);
+                return db.obtenerFormulariosAvaladosPorPersona(email);
             }
             catch (Exception ex)
             {
@@ -28,32 +28,32 @@ namespace ApiHorasExtra.Controllers
         }
 
         // POST: api/Tareas
-        //[ResponseType(typeof(TAREAS))]
-        //public IHttpActionResult PostTareas(TAREAS tarea)
-        //{
-        //    try
-        //    {
-        //        string resp = db.crearTarea(tarea);
+        [ResponseType(typeof(ModelCrearFormularioAvalado))]
+        public IHttpActionResult PostTareas(ModelCrearFormularioAvalado formulario)
+        {
+            try
+            {
+                string resp = db.CrearFormularioAvalado(formulario);
 
-        //        if (resp.Equals("1"))
-        //        {
-        //            return CreatedAtRoute("DefaultApi", new { id = tarea.Descripcion }, tarea);
-        //        }
-        //        else if (resp.Equals("Tarea Existe"))
-        //        {
-        //            return Conflict();
-        //        }
-        //        else
-        //        {
-        //            throw new Exception(resp);
-        //        }
+                if (resp.Equals("1"))
+                {
+                    return CreatedAtRoute("DefaultApi", new { id = formulario.Motivo }, formulario);
+                }
+                else if (resp.Equals("Tarea no existe"))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw new Exception(resp);
+                }
 
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return InternalServerError(ex);
-        //    }
-        //}
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
+        }
 
         //[ResponseType(typeof(PERSONAS))]
         //[Route("api/Personas/Login", Name = "InicioSesion")]

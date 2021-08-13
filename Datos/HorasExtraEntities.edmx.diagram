@@ -25,8 +25,8 @@
         <AssociationConnector Association="HorasExtraModel.FK_PagoTipoPago" ManuallyRouted="false" />
         <AssociationConnector Association="HorasExtraModel.FK_SolicitudPersona" ManuallyRouted="false" />
         <EntityTypeShape EntityType="HorasExtraModel.TareaPersona" Width="1.5" PointX="0.75" PointY="5.75" />
-        <EntityTypeShape EntityType="HorasExtraModel.FormulariosSolcitudPersona" Width="1.5" PointX="3.375" PointY="6.75" />
-        <EntityTypeShape EntityType="HorasExtraModel.DocumentosEvidencias" Width="1.5" PointX="5.375" PointY="6.75" />
+        <EntityTypeShape EntityType="HorasExtraModel.FormulariosSolcitudPersona" Width="1.5" PointX="3" PointY="6" />
+        <EntityTypeShape EntityType="HorasExtraModel.DocumentosEvidencias" Width="1.5" PointX="5.375" PointY="6.25" />
         <EntityTypeShape EntityType="HorasExtraModel.ObtenerFormularioAvaladoTiempo" Width="1.5" PointX="7.375" PointY="7.75" />
       </Diagram>
     </edmx:Diagrams>

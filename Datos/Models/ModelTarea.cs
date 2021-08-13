@@ -9,7 +9,7 @@ namespace Datos.Models
    public class ModelTarea
     {
         public string email { get; set; }
-        public string Nombre { get; set; }
+        public string Motivo { get; set; }
 
         public int  idSolicitud { get; set; }
 

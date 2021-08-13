@@ -19,36 +19,19 @@ namespace Datos.Clases
 
         public string CrearFormularioAvalado(string motivo, FORMULARIOS_AVALADOS tarea)
         {
+
             try
             {
-                if (persona.idTarea(motivo)==1)
+                entities.FORMULARIOS_AVALADOS.Add(tarea);
+                int res = entities.SaveChanges();
+                if (res == 1)
                 {
-                    try
-                    {
-                        entities.FORMULARIOS_AVALADOS.Add(tarea);
-                        int res = entities.SaveChanges();
-                        if (res == 1)
-                        {
-                            return "1";
-                        }
-                        else
-                        {
-                            return "0";
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-
-                        throw ex;
-                    }
-
+                    return "1";
                 }
                 else
                 {
-                    return "Persona no existe";
-
+                    return "0";
                 }
-
             }
             catch (Exception ex)
             {

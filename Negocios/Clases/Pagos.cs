@@ -8,24 +8,25 @@ using Datos.Clases;
 
 namespace Negocios.Clases
 {
-    public class Evidencias
+   public class Pagos
     {
-        private Evidencia evi = new Datos.Clases.Evidencia();
-        private Tarea Tarea = new Tarea();
+        private Pago pago = new Pago();
+        private FormularioPago frmpago = new FormularioPago();
 
-        public string CrearEvidencia(string motivo, DateTime envio, DateTime horafin, DateTime horaini, string ruta, bool estado)
+        public string CrearPago(string email,string motivo, int idtipo, string monto)
         {
             try
             {
-                if (Tarea.idTarea(motivo) != 0)
+                if (pago.obternerFormularioPago(email,motivo).Count !=0)
                 {
-                    int idpersona = Tarea.idTarea(motivo);
-                    string res = evi.CrearEvidencia(motivo, new EVIDENCIAS()
+                    int idpersona = pago.obterneridPago(email,motivo);
+                    string res = pago.CrearPago(email, motivo, new PAGOS()
                     {
-                        idSolicitud = idpersona,
-                        RutaDocumento=ruta,
-                        HoraFinal = horafin,
-                        HoraInicial = horaini,
+                        idFormularioPago = idpersona,
+                        idTipoPago= idtipo,
+                        Monto = monto
+
+
                     });
 
                     if (res.Equals("1"))
@@ -53,12 +54,12 @@ namespace Negocios.Clases
             }
         }
 
-        public List<EVIDENCIAS> obtenerListaEvidencia(string email)
+        public List<PAGOS> obtenerListaTareaPorPersona(string email, string motivo)
         {
             try
             {
-                List<EVIDENCIAS> lista = new List<EVIDENCIAS>();
-                lista = evi.obternerFormularioEvidencia(email);
+                List<PAGOS> lista = new List<PAGOS>();
+                lista = pago.obternerFormularioPago(email, motivo);
 
                 return lista;
 
@@ -69,5 +70,6 @@ namespace Negocios.Clases
                 throw ex;
             }
         }
+
     }
 }

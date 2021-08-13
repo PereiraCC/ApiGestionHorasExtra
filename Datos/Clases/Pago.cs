@@ -6,27 +6,27 @@ using System.Threading.Tasks;
 
 namespace Datos.Clases
 {
-   public class FormularioPago
+    public class Pago
     {
         private HorasExtraEntities entities;
-        private FormularioTiempo tiempo = new FormularioTiempo();
+        private FormularioPago pagos = new FormularioPago();
         
 
-        public FormularioPago()
+        public Pago()
         {
             entities = new HorasExtraEntities();
 
         }
 
-        public string CrearFormularioPago(string email,string motivo, FORMULARIOS_PAGO tarea)
+        public string CrearPago(string email, string motivo, PAGOS tarea)
         {
             try
             {
-                if (tiempo.obternerFormularioTiempo(email,motivo).Count !=0)
+                if (pagos.obternerFormularioPago(email, motivo).Count != 0)
                 {
                     try
                     {
-                        entities.FORMULARIOS_PAGO.Add(tarea);
+                        entities.PAGOS.Add(tarea);
                         int res = entities.SaveChanges();
                         if (res == 1)
                         {
@@ -59,17 +59,17 @@ namespace Datos.Clases
 
         }
 
-        public List<FORMULARIOS_PAGO> obternerFormularioPago(string email,string motivo)
+        public List<PAGOS> obternerFormularioPago(string email, string motivo)
         {
             try
             {
-                int id = tiempo.obterneridFormularioTiempo(email,motivo);
+                int id = pagos.obterneridFormularioPago(email, motivo);
 
-                List<FORMULARIOS_PAGO> model = new List<FORMULARIOS_PAGO>();
-                var query = from c in entities.FORMULARIOS_PAGO
-                            where c.idFormularioTiempo == id
+                List<PAGOS> model = new List<PAGOS>();
+                var query = from c in entities.PAGOS
+                            where c.idFormularioPago == id
                             select c;
-                model = query.ToList<FORMULARIOS_PAGO>();
+                model = query.ToList<PAGOS>();
 
                 return model;
 
@@ -83,26 +83,26 @@ namespace Datos.Clases
         }
 
 
-        public int obterneridFormularioPago(string email, string motivo)
+        public int obterneridPago(string email, string motivo)
         {
             try
             {
-                int id = tiempo.obterneridFormularioTiempo(email, motivo);
+                int id = pagos.obterneridFormularioPago(email, motivo);
 
-                List<FORMULARIOS_PAGO> model = new List<FORMULARIOS_PAGO>();
-                var query = from c in entities.FORMULARIOS_PAGO
-                            where c.idFormularioTiempo == id
+                List<PAGOS> model = new List<PAGOS>();
+                var query = from c in entities.PAGOS
+                            where c.idFormularioPago == id
                             select c;
-                model = query.ToList<FORMULARIOS_PAGO>();
+                model = query.ToList<PAGOS>();
+
                 int id1 = 0;
-                foreach(FORMULARIOS_PAGO t in model)
+
+                foreach(PAGOS t in model)
                 {
                     id1 = t.idFormularioPago;
                 }
 
                 return id1;
-
-
             }
             catch (Exception ex)
             {
@@ -110,5 +110,6 @@ namespace Datos.Clases
                 throw ex;
             }
         }
+
     }
 }

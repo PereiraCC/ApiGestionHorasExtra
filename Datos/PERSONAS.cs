@@ -18,6 +18,7 @@ namespace Datos
         public PERSONAS()
         {
             this.SOLICITUD_TAREAS = new HashSet<SOLICITUD_TAREAS>();
+            this.FORMULARIO_SOLICITUD_TAREAS = new HashSet<FORMULARIO_SOLICITUD_TAREAS>();
         }
     
         public int idPersona { get; set; }
@@ -29,5 +30,7 @@ namespace Datos
         public virtual DEPARTAMENTOS DEPARTAMENTOS { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SOLICITUD_TAREAS> SOLICITUD_TAREAS { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<FORMULARIO_SOLICITUD_TAREAS> FORMULARIO_SOLICITUD_TAREAS { get; set; }
     }
 }

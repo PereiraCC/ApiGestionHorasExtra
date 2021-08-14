@@ -192,5 +192,38 @@ namespace Datos.Clases
                 throw ex;
             }
         }
+
+        public List<PersonaModel> ObtenerFuncionarios()
+        {
+            try
+            {
+                List<PersonaModel> data = new List<PersonaModel>();
+
+               var query = from c in entities.PERSONAS
+                            where c.idDepartamento == 7
+                            select c;
+
+                List<PERSONAS> user = query.ToList<PERSONAS>();
+
+                foreach (PERSONAS u in user)
+                {
+                    if (u.idDepartamento == 7)
+                    {
+                        data.Add(new PersonaModel()
+                        {
+                            nombreCompleto = u.NombreCompleto,
+                            email = u.Email,
+                            departamento = departamento.getNombreDepartamento(u.idDepartamento)
+                        });
+                    }
+                }
+
+                return data;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

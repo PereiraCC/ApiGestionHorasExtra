@@ -224,6 +224,19 @@ namespace Negocios.Clases
             }
         }
 
+        public List<PersonaModel> obtenerListaFuncionarios()
+        {
+            try
+            {
+                return usuario.ObtenerFuncionarios();
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
     }
 
 }

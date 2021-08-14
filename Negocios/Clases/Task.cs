@@ -14,22 +14,22 @@ namespace Negocios.Clases
         private Tarea tarea = new Tarea();
         private Persona persona = new Persona();
 
-        public string CrearTarea(string email,DateTime fecha, DateTime salida, DateTime entrada, string movtivo, int hora, bool estado )
+        public string CrearTarea(ModelTarea t)
         {
             try
             {
-                if(persona.ExistePersona(email))
+                if(persona.ExistePersona(t.email))
                 {
-                    int idpersona = persona.getIdPersona(email);
-                    string res = tarea.CrearTarea(email,new SOLICITUD_TAREAS()
+                    int idpersona = persona.getIdPersona(t.email);
+                    string res = tarea.CrearTarea(new SOLICITUD_TAREAS()
                     {
-                        Entrada=entrada,
-                        Salida=salida,
-                        Estado= estado,
-                        Fecha= fecha,
+                        Entrada=t.entrada,
+                        Salida= t.Salida,
+                        Estado= false,
+                        Fecha= t.Fecha,
                         idPersona= idpersona,
-                        Motivo=movtivo,
-                        TotalHoras=hora
+                        Motivo= t.Motivo,
+                        TotalHoras=t.Horas
                     });
 
                     if(res.Equals("1"))
@@ -46,9 +46,6 @@ namespace Negocios.Clases
                 {
                     return "La persona no existe";
                 }
-
-                
-
             }
             catch (Exception ex)
             {

@@ -58,6 +58,7 @@
     <Compile Include="Clases\InicioSesion.cs" />
     <Compile Include="Clases\Pago.cs" />
     <Compile Include="Clases\Persona.cs" />
+    <Compile Include="Clases\SolicitudTarea.cs" />
     <Compile Include="Clases\Tarea.cs" />
     <Compile Include="Clases\Ticket.cs" />
     <Compile Include="DEPARTAMENTOS.cs">
@@ -79,6 +80,9 @@
       <DependentUpon>HorasExtraEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="FORMULARIOS_TIEMPO.cs">
+      <DependentUpon>HorasExtraEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FORMULARIO_SOLICITUD_TAREAS.cs">
       <DependentUpon>HorasExtraEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="HorasExtraEntities.Context.cs">
@@ -112,6 +116,9 @@
       <DependentUpon>HorasExtraEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SolicitudTareaPersona.cs">
+      <DependentUpon>HorasExtraEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="SOLICITUD_TAREAS.cs">
       <DependentUpon>HorasExtraEntities.tt</DependentUpon>
     </Compile>

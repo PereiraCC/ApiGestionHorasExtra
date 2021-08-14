@@ -15,6 +15,22 @@ namespace ApiHorasExtra.Controllers
         // Objeto de clase negocios
         private Users db = new Users();
 
+
+        [ResponseType(typeof(PersonaModel))]
+        [Route("api/Personas/GetFuncionarios", Name = "getFuncionarios")]
+        public List<PersonaModel> getFuncionarios()
+        {
+            try
+            {
+                return db.obtenerListaFuncionarios();
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         // Crear un usuario
         // POST: api/Personas
         [ResponseType(typeof(PERSONAS))]

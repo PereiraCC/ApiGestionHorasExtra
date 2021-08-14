@@ -46,36 +46,27 @@ namespace Datos.Clases
             }
         }
 
-        public string CrearTarea(string email, SOLICITUD_TAREAS tarea)
+        public string CrearTarea(SOLICITUD_TAREAS tarea)
         {
             try
-            {
-                if (persona.ExistePersona(email))
-                {                    
-                    try
-                    {
-                       entities.SOLICITUD_TAREAS.Add(tarea);
-                        int res = entities.SaveChanges();
-                        if (res==1)
-                        {
-                            return "1";
-                        }
-                        else
-                        {
-                            return "0";
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-
-                        throw ex;
-                    }
-
-                }
-                else
+            {                 
+                try
                 {
-                    return "Persona no existe";
+                    entities.SOLICITUD_TAREAS.Add(tarea);
+                    int res = entities.SaveChanges();
+                    if (res==1)
+                    {
+                        return "1";
+                    }
+                    else
+                    {
+                        return "0";
+                    }
+                }
+                catch (Exception ex)
+                {
 
+                    throw ex;
                 }
                 
             }

@@ -10,16 +10,16 @@ using System.Web.Http.Description;
 
 namespace ApiHorasExtra.Controllers
 {
-    public class TareasController : ApiController
+    public class SolicitudController : ApiController
     {
         // Objeto de clase negocios
-        private NegociosTask db = new NegociosTask();
+        private SolicitudTareaNegocio db = new SolicitudTareaNegocio();
 
-        public List<ModelTarea> GetTareas(string email)
+        public List<ModelTarea> GetSolicitud()
         {
             try
             {
-                return db.obtenerListaTareaPorPersona(email);
+                return db.obtenerListaSolicitudes();
             }
             catch (Exception ex)
             {
@@ -29,7 +29,7 @@ namespace ApiHorasExtra.Controllers
 
         // POST: api/Tareas
         [ResponseType(typeof(ModelTarea))]
-        public IHttpActionResult PostTareas(ModelTarea tarea)
+        public IHttpActionResult PostSolicitud(ModelTarea tarea)
         {
             try
             {
@@ -55,38 +55,33 @@ namespace ApiHorasExtra.Controllers
             }
         }
 
-        //[ResponseType(typeof(PERSONAS))]
-        //[Route("api/Personas/Login", Name = "InicioSesion")]
-        //public IHttpActionResult InicioSesion(PersonaModel p)
-        //{
-        //    try
-        //    {
-        //        string resp = db.ValidarInicioSesion(p);
-        //        string[] data = resp.Split(',');
+        //[ResponseType(typeof(ModelTarea))]
+        [Route("api/Solicitud/AceptarSolicitud", Name = "AceptarSolicitud")]
+        public IHttpActionResult AceptarSolicitud(string motivo)
+        {
+            try
+            {
+                string resp = db.AceptarSolicitud(motivo);
 
-        //        if (data[1].Equals("El usuario no existe"))
-        //        {
-        //            return NotFound();
-        //        }
-        //        else if (data[1].Equals("Usuario y/o contraseña incorrectos."))
-        //        {
-        //            throw new Exception(data[1]);
-        //        }
-        //        else if (data[0].Equals("1"))
-        //        {
-        //            return Ok(data[1]);
-        //        }
-        //        else
-        //        {
-        //            throw new Exception(data[1]);
-        //        }
+                if (resp.Equals("1"))
+                {
+                    return Ok();
+                }
+                else if (resp.Equals("La persona no existe"))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw new Exception(resp);
+                }
 
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return InternalServerError(ex);
-        //    }
-        //}
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
+        }
 
         //[ResponseType(typeof(PERSONAS))]
         //[Route("api/Personas/SingOut", Name = "CerrarSesion")]

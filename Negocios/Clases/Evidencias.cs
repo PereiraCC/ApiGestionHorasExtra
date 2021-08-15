@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Datos;
 using Datos.Clases;
+using Datos.Models;
 
 namespace Negocios.Clases
 {
@@ -13,19 +14,20 @@ namespace Negocios.Clases
         private Evidencia evi = new Datos.Clases.Evidencia();
         private Tarea Tarea = new Tarea();
 
-        public string CrearEvidencia(string motivo, DateTime envio, DateTime horafin, DateTime horaini, string ruta, bool estado)
+        public string CrearEvidencia(ModelEvidencia e)
         {
             try
             {
-                if (Tarea.idTarea(motivo) != 0)
+                if (Tarea.idTarea(e.Motivo) != 0)
                 {
-                    int idpersona = Tarea.idTarea(motivo);
-                    string res = evi.CrearEvidencia(motivo, new EVIDENCIAS()
+                    int idSolicitud = Tarea.idTarea(e.Motivo);
+                    string res = evi.CrearEvidencia(new EVIDENCIAS()
                     {
-                        idSolicitud = idpersona,
-                        RutaDocumento=ruta,
-                        HoraFinal = horafin,
-                        HoraInicial = horaini,
+                        idSolicitud = idSolicitud,
+                        RutaDocumento= e.RutaDocumento,
+                        HoraFinal = e.HoraFinal,
+                        HoraInicial = e.HoraInicial,
+                        Estado = false
                     });
 
                     if (res.Equals("1"))
@@ -53,15 +55,24 @@ namespace Negocios.Clases
             }
         }
 
-        public List<EVIDENCIAS> obtenerListaEvidencia(string email)
+        public List<EvidenciasFuncionario> obtenerListaEvidenciaFuncionario(string email)
         {
             try
             {
-                List<EVIDENCIAS> lista = new List<EVIDENCIAS>();
-                lista = evi.obternerFormularioEvidencia(email);
+                return evi.obternerEvidenciasFuncionario(email);
+            }
+            catch (Exception ex)
+            {
 
-                return lista;
+                throw ex;
+            }
+        }
 
+        public string AceptarEvidencia(int idEvidencia)
+        {
+            try
+            {
+                return evi.aceptarEvidencia(idEvidencia);
             }
             catch (Exception ex)
             {

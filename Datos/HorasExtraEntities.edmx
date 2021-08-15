@@ -22,6 +22,7 @@
           <Property Name="HoraInicial" Type="datetime" Nullable="false" />
           <Property Name="HoraFinal" Type="datetime" Nullable="false" />
           <Property Name="idSolicitud" Type="int" Nullable="false" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="FORMULARIO_SOLICITUD_TAREAS">
           <Key>
@@ -126,6 +127,26 @@ warning 6002: The table/view 'devHorasExtra.dbo.DocumentosEvidencias' does not h
           <Property Name="idSolicitud" Type="int" Nullable="false" />
           <Property Name="RutaDocumento" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Email" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'devHorasExtra.dbo.EvidenciasFuncionario' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="EvidenciasFuncionario">
+          <Key>
+            <PropertyRef Name="idEvidencia" />
+            <PropertyRef Name="Motivo" />
+            <PropertyRef Name="HoraInicial" />
+            <PropertyRef Name="HoraFinal" />
+            <PropertyRef Name="RutaDocumento" />
+            <PropertyRef Name="idPersona" />
+            <PropertyRef Name="Estado" />
+          </Key>
+          <Property Name="idEvidencia" Type="int" Nullable="false" />
+          <Property Name="Motivo" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="HoraInicial" Type="datetime" Nullable="false" />
+          <Property Name="HoraFinal" Type="datetime" Nullable="false" />
+          <Property Name="RutaDocumento" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="idPersona" Type="int" Nullable="false" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'devHorasExtra.dbo.FormulariosSolcitudPersona' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -347,6 +368,17 @@ warning 6002: The table/view 'devHorasExtra.dbo.TareaPersona' does not have a pr
     [DocumentosEvidencias].[Email] AS [Email]
     FROM [dbo].[DocumentosEvidencias] AS [DocumentosEvidencias]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="EvidenciasFuncionario" EntityType="Self.EvidenciasFuncionario" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [EvidenciasFuncionario].[idEvidencia] AS [idEvidencia], 
+    [EvidenciasFuncionario].[Motivo] AS [Motivo], 
+    [EvidenciasFuncionario].[HoraInicial] AS [HoraInicial], 
+    [EvidenciasFuncionario].[HoraFinal] AS [HoraFinal], 
+    [EvidenciasFuncionario].[RutaDocumento] AS [RutaDocumento], 
+    [EvidenciasFuncionario].[idPersona] AS [idPersona], 
+    [EvidenciasFuncionario].[Estado] AS [Estado]
+    FROM [dbo].[EvidenciasFuncionario] AS [EvidenciasFuncionario]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="FormulariosSolcitudPersona" EntityType="Self.FormulariosSolcitudPersona" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [FormulariosSolcitudPersona].[Email] AS [Email], 
@@ -456,6 +488,7 @@ warning 6002: The table/view 'devHorasExtra.dbo.TareaPersona' does not have a pr
           <Property Name="HoraFinal" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="idSolicitud" Type="Int32" Nullable="false" />
           <NavigationProperty Name="SOLICITUD_TAREAS" Relationship="Self.FK_EvidenciaSolicitud" FromRole="EVIDENCIAS" ToRole="SOLICITUD_TAREAS" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="FORMULARIOS_AVALADOS">
           <Key>
@@ -715,6 +748,7 @@ warning 6002: The table/view 'devHorasExtra.dbo.TareaPersona' does not have a pr
             <End Role="FORMULARIO_SOLICITUD_TAREAS" EntitySet="FORMULARIO_SOLICITUD_TAREAS" />
           </AssociationSet>
           <EntitySet Name="SolicitudTareaPersona" EntityType="HorasExtraModel.SolicitudTareaPersona" />
+          <EntitySet Name="EvidenciasFuncionario" EntityType="HorasExtraModel.EvidenciasFuncionario" />
         </EntityContainer>
         <EntityType Name="TareaPersona">
           <Key>
@@ -826,6 +860,24 @@ warning 6002: The table/view 'devHorasExtra.dbo.TareaPersona' does not have a pr
           <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Estado" Type="Boolean" Nullable="false" />
         </EntityType>
+        <EntityType Name="EvidenciasFuncionario">
+          <Key>
+            <PropertyRef Name="idEvidencia" />
+            <PropertyRef Name="Motivo" />
+            <PropertyRef Name="HoraInicial" />
+            <PropertyRef Name="HoraFinal" />
+            <PropertyRef Name="RutaDocumento" />
+            <PropertyRef Name="idPersona" />
+            <PropertyRef Name="Estado" />
+          </Key>
+          <Property Name="idEvidencia" Type="Int32" Nullable="false" />
+          <Property Name="Motivo" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="HoraInicial" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="HoraFinal" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="RutaDocumento" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="idPersona" Type="Int32" Nullable="false" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -844,6 +896,7 @@ warning 6002: The table/view 'devHorasExtra.dbo.TareaPersona' does not have a pr
           <EntitySetMapping Name="EVIDENCIAS">
             <EntityTypeMapping TypeName="HorasExtraModel.EVIDENCIAS">
               <MappingFragment StoreEntitySet="EVIDENCIAS">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
                 <ScalarProperty Name="idEvidencia" ColumnName="idEvidencia" />
                 <ScalarProperty Name="RutaDocumento" ColumnName="RutaDocumento" />
                 <ScalarProperty Name="HoraInicial" ColumnName="HoraInicial" />
@@ -1010,6 +1063,19 @@ warning 6002: The table/view 'devHorasExtra.dbo.TareaPersona' does not have a pr
                 <ScalarProperty Name="idFormularioSolicitud" ColumnName="idFormularioSolicitud" />
                 <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EvidenciasFuncionario">
+            <EntityTypeMapping TypeName="HorasExtraModel.EvidenciasFuncionario">
+              <MappingFragment StoreEntitySet="EvidenciasFuncionario">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="idPersona" ColumnName="idPersona" />
+                <ScalarProperty Name="RutaDocumento" ColumnName="RutaDocumento" />
+                <ScalarProperty Name="HoraFinal" ColumnName="HoraFinal" />
+                <ScalarProperty Name="HoraInicial" ColumnName="HoraInicial" />
+                <ScalarProperty Name="Motivo" ColumnName="Motivo" />
+                <ScalarProperty Name="idEvidencia" ColumnName="idEvidencia" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

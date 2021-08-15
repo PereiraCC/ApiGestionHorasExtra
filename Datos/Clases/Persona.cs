@@ -211,6 +211,7 @@ namespace Datos.Clases
                     {
                         data.Add(new PersonaModel()
                         {
+                            idPersona = u.idPersona,
                             nombreCompleto = u.NombreCompleto,
                             email = u.Email,
                             departamento = departamento.getNombreDepartamento(u.idDepartamento)

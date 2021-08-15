@@ -31,6 +31,7 @@
         <EntityTypeShape EntityType="HorasExtraModel.FORMULARIO_SOLICITUD_TAREAS" Width="1.5" PointX="4" PointY="0.5" />
         <AssociationConnector Association="HorasExtraModel.FK_FormularioSolicitudPersona" />
         <EntityTypeShape EntityType="HorasExtraModel.SolicitudTareaPersona" Width="1.5" PointX="0.75" PointY="9.75" />
+        <EntityTypeShape EntityType="HorasExtraModel.EvidenciasFuncionario" Width="1.5" PointX="3.375" PointY="9.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

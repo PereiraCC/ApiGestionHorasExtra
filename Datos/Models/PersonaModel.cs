@@ -8,6 +8,7 @@ namespace Datos.Models
 {
     public class PersonaModel
     {
+        public int idPersona { get; set; }
 
         public string nombreCompleto { get; set; }
 

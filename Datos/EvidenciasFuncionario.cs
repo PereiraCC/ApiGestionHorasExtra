@@ -12,15 +12,14 @@ namespace Datos
     using System;
     using System.Collections.Generic;
     
-    public partial class EVIDENCIAS
+    public partial class EvidenciasFuncionario
     {
         public int idEvidencia { get; set; }
-        public string RutaDocumento { get; set; }
+        public string Motivo { get; set; }
         public System.DateTime HoraInicial { get; set; }
         public System.DateTime HoraFinal { get; set; }
-        public int idSolicitud { get; set; }
+        public string RutaDocumento { get; set; }
+        public int idPersona { get; set; }
         public bool Estado { get; set; }
-    
-        public virtual SOLICITUD_TAREAS SOLICITUD_TAREAS { get; set; }
     }
 }

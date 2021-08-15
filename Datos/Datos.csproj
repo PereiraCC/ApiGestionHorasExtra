@@ -70,6 +70,9 @@
     <Compile Include="EVIDENCIAS.cs">
       <DependentUpon>HorasExtraEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="EvidenciasFuncionario.cs">
+      <DependentUpon>HorasExtraEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="FormulariosSolcitudPersona.cs">
       <DependentUpon>HorasExtraEntities.tt</DependentUpon>
     </Compile>
@@ -104,6 +107,7 @@
       <DependentUpon>HorasExtraEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ModelCrearFormularioAvalado.cs" />
+    <Compile Include="Models\ModelEvidencia.cs" />
     <Compile Include="Models\ModelTarea.cs" />
     <Compile Include="Models\PersonaModel.cs" />
     <Compile Include="ObtenerFormularioAvaladoTiempo.cs">

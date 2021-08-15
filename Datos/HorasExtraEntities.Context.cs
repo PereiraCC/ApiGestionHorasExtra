@@ -41,5 +41,6 @@ namespace Datos
         public virtual DbSet<ObtenerFormularioAvaladoTiempo> ObtenerFormularioAvaladoTiempo { get; set; }
         public virtual DbSet<FORMULARIO_SOLICITUD_TAREAS> FORMULARIO_SOLICITUD_TAREAS { get; set; }
         public virtual DbSet<SolicitudTareaPersona> SolicitudTareaPersona { get; set; }
+        public virtual DbSet<EvidenciasFuncionario> EvidenciasFuncionario { get; set; }
     }
 }

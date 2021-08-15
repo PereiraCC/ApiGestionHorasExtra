@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,7 +10,7 @@ namespace Datos.Clases
     public class Evidencia
     {
         private HorasExtraEntities entities;
-        public Tarea persona = new Tarea();
+        public Persona persona = new Persona();
 
         public Evidencia()
         {
@@ -17,66 +18,67 @@ namespace Datos.Clases
 
         }
 
-        public string CrearEvidencia(string motivo, EVIDENCIAS tarea)
+        public string CrearEvidencia(EVIDENCIAS tarea)
         {
             try
             {
-                if (persona.idTarea(motivo)!=0)
+                entities.EVIDENCIAS.Add(tarea);
+                int res = entities.SaveChanges();
+                if (res == 1)
                 {
-                    try
-                    {
-                        entities.EVIDENCIAS.Add(tarea);
-                        int res = entities.SaveChanges();
-                        if (res == 1)
-                        {
-                            return "1";
-                        }
-                        else
-                        {
-                            return "0";
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-
-                        throw ex;
-                    }
-
+                    return "1";
                 }
                 else
                 {
-                    return "Persona no existe";
-
+                    return "0";
                 }
-
             }
             catch (Exception ex)
             {
 
                 throw ex;
             }
-
         }
 
-        public List<EVIDENCIAS> obternerFormularioEvidencia(string email)
+        public List<EvidenciasFuncionario> obternerEvidenciasFuncionario(string email)
         {
             try
             {
-                int id=persona.idTarea(email);
+                int id = persona.getIdPersona(email);
 
-                List<EVIDENCIAS> model = new List<EVIDENCIAS>();
-                var query = from c in entities.EVIDENCIAS
-                            where c.idSolicitud == id
+                var query = from c in entities.EvidenciasFuncionario
+                            where c.idPersona == id && c.Estado == false
                             select c;
-                model = query.ToList<EVIDENCIAS>();
-
-                return model;
-
-
+                return query.ToList<EvidenciasFuncionario>();
             }
             catch (Exception ex)
             {
+                throw ex;
+            }
+        }
 
+        public string aceptarEvidencia(int idEvidencia)
+        {
+
+            try
+            {
+                EVIDENCIAS e = entities.EVIDENCIAS.First<EVIDENCIAS>(x => x.idEvidencia == idEvidencia);
+                e.Estado = true;
+
+                entities.Entry(e).State = EntityState.Modified;
+
+                int res = entities.SaveChanges();
+                if (res == 1)
+                {
+                    return "1";
+                }
+                else
+                {
+                    return "0";
+                }
+            }
+            catch (Exception ex)
+            {
                 throw ex;
             }
         }

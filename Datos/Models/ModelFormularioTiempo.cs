@@ -12,7 +12,7 @@ namespace Datos.Clases
 
         public int idFormularioAvalado { get; set; }
 
-        public int Horas { get; set; }
+        public int HorasValidas { get; set; }
 
         public string Quincena { get; set; }
 

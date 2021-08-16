@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Datos;
 using Datos.Clases;
+using Datos.Models;
 
 namespace Negocios.Clases
 {
@@ -13,19 +14,19 @@ namespace Negocios.Clases
         private FormularioPago pago = new FormularioPago();
         private FormularioTiempo tiempo = new FormularioTiempo();
 
-        public string CrearTarea(string email, string movtivo, string monto, string descripcion)
+        public string CrearFormularioPago(ModelFormularioPago formulario)
         {
             try
             {
-                if (pago.obternerFormularioPago(email, movtivo).Count != 0)
-                {
-                    int idTiempo = tiempo.obterneridFormularioTiempo(email, movtivo);
-                    string res = pago.CrearFormularioPago(email, movtivo, new FORMULARIOS_PAGO()
+                //if (pago.obternerFormularioPago(email, movtivo).Count != 0)
+                //{
+                    //int idTiempo = tiempo.obterneridFormularioTiempo(email, movtivo);
+                    string res = pago.CrearFormularioPago(new FORMULARIOS_PAGO()
                     {
-                        idFormularioTiempo = idTiempo,
-                        Descripcion= descripcion,
-                        Monto= monto
-
+                        idFormularioTiempo = formulario.idFormularioTiempo,
+                        Descripcion= formulario.Descripcion,
+                        Monto= formulario.Monto,
+                        Estado = false
                     }); 
 
                     if (res.Equals("1"))
@@ -37,14 +38,11 @@ namespace Negocios.Clases
                         return res;
                     }
 
-                }
-                else
-                {
-                    return "La persona no existe";
-                }
-
-
-
+                //}
+                //else
+                //{
+                //    return "La persona no existe";
+                //}
             }
             catch (Exception ex)
             {

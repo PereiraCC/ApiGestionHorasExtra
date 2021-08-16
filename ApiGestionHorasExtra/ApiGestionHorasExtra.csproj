@@ -92,6 +92,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\FormulariosPagosController.cs" />
     <Compile Include="Controllers\FormulariosTiempoController.cs" />
     <Compile Include="Controllers\FormulariosAvaladosController.cs" />
     <Compile Include="Controllers\SolicitudController.cs" />

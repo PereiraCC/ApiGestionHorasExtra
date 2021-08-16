@@ -18,19 +18,19 @@ namespace Datos.Clases
 
         }
 
-        public string CrearFormularioPago(string email,string motivo, FORMULARIOS_PAGO tarea)
+        public string CrearFormularioPago(FORMULARIOS_PAGO formulario)
         {
             try
             {
-                if (tiempo.obternerFormularioTiempo(email,motivo).Count !=0)
-                {
+                //if (tiempo.obternerFormularioTiempo(email,motivo).Count !=0)
+                //{
                     try
                     {
-                        entities.FORMULARIOS_PAGO.Add(tarea);
+                        entities.FORMULARIOS_PAGO.Add(formulario);
                         int res = entities.SaveChanges();
                         if (res == 1)
                         {
-                            return "1";
+                            return tiempo.ActualizarFormularioTiempo(formulario.idFormularioTiempo);
                         }
                         else
                         {
@@ -43,12 +43,12 @@ namespace Datos.Clases
                         throw ex;
                     }
 
-                }
-                else
-                {
-                    return "Persona no existe";
+                //}
+                //else
+                //{
+                //    return "Persona no existe";
 
-                }
+                //}
 
             }
             catch (Exception ex)

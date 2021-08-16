@@ -18,5 +18,11 @@ namespace Datos
         public string Motivo { get; set; }
         public int idSolicitud { get; set; }
         public int idFormularioAvalado { get; set; }
+        public System.DateTime FechaEnvio { get; set; }
+        public int HorasValidas { get; set; }
+        public string QUINCENA { get; set; }
+        public int idFormularioTiempo { get; set; }
+        public bool Estado { get; set; }
+        public string RutaArchivo { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -96,17 +97,17 @@ namespace Datos.Clases
             }
         }
 
-        public List<FORMULARIOS_TIEMPO> obternerFormularioTiempo(string email,string motivo)
+        public List<ObtenerFormularioAvaladoTiempo> obternerFormularioTiempo(string email)
         {
             try
             {
-                int id = idFormularioAvalado(email, motivo);
+                //int id = idFormularioAvalado(email, motivo);
 
-                List<FORMULARIOS_TIEMPO> model = new List<FORMULARIOS_TIEMPO>();
-                var query = from c in entities.FORMULARIOS_TIEMPO
-                            where c.idFormularioAvalado == id
+                List<ObtenerFormularioAvaladoTiempo> model = new List<ObtenerFormularioAvaladoTiempo>();
+                var query = from c in entities.ObtenerFormularioAvaladoTiempo
+                            where c.Email == email && c.Estado == false
                             select c;
-                model = query.ToList<FORMULARIOS_TIEMPO>();
+                model = query.ToList<ObtenerFormularioAvaladoTiempo>();
 
                 return model;
 
@@ -115,6 +116,32 @@ namespace Datos.Clases
             catch (Exception ex)
             {
 
+                throw ex;
+            }
+        }
+
+        public string ActualizarFormularioTiempo(int idFormularioTiempo)
+        {
+
+            try
+            {
+                FORMULARIOS_TIEMPO f = entities.FORMULARIOS_TIEMPO.First<FORMULARIOS_TIEMPO>(x => x.idFormularioTiempo == idFormularioTiempo);
+                f.Estado = true;
+
+                entities.Entry(f).State = EntityState.Modified;
+
+                int res = entities.SaveChanges();
+                if (res == 1)
+                {
+                    return "1";
+                }
+                else
+                {
+                    return "0";
+                }
+            }
+            catch (Exception ex)
+            {
                 throw ex;
             }
         }

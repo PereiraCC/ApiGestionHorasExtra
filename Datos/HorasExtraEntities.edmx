@@ -182,11 +182,22 @@ warning 6002: The table/view 'devHorasExtra.dbo.ObtenerFormularioAvaladoTiempo' 
             <PropertyRef Name="Motivo" />
             <PropertyRef Name="idSolicitud" />
             <PropertyRef Name="idFormularioAvalado" />
+            <PropertyRef Name="FechaEnvio" />
+            <PropertyRef Name="HorasValidas" />
+            <PropertyRef Name="QUINCENA" />
+            <PropertyRef Name="idFormularioTiempo" />
+            <PropertyRef Name="Estado" />
           </Key>
           <Property Name="Email" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Motivo" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="idSolicitud" Type="int" Nullable="false" />
           <Property Name="idFormularioAvalado" Type="int" Nullable="false" />
+          <Property Name="FechaEnvio" Type="date" Nullable="false" />
+          <Property Name="HorasValidas" Type="int" Nullable="false" />
+          <Property Name="QUINCENA" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="idFormularioTiempo" Type="int" Nullable="false" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+          <Property Name="RutaArchivo" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'devHorasExtra.dbo.SolicitudTareaPersona' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -405,7 +416,13 @@ warning 6002: The table/view 'devHorasExtra.dbo.TareaPersona' does not have a pr
     [ObtenerFormularioAvaladoTiempo].[Email] AS [Email], 
     [ObtenerFormularioAvaladoTiempo].[Motivo] AS [Motivo], 
     [ObtenerFormularioAvaladoTiempo].[idSolicitud] AS [idSolicitud], 
-    [ObtenerFormularioAvaladoTiempo].[idFormularioAvalado] AS [idFormularioAvalado]
+    [ObtenerFormularioAvaladoTiempo].[idFormularioAvalado] AS [idFormularioAvalado], 
+    [ObtenerFormularioAvaladoTiempo].[FechaEnvio] AS [FechaEnvio], 
+    [ObtenerFormularioAvaladoTiempo].[HorasValidas] AS [HorasValidas], 
+    [ObtenerFormularioAvaladoTiempo].[QUINCENA] AS [QUINCENA], 
+    [ObtenerFormularioAvaladoTiempo].[idFormularioTiempo] AS [idFormularioTiempo], 
+    [ObtenerFormularioAvaladoTiempo].[Estado] AS [Estado], 
+    [ObtenerFormularioAvaladoTiempo].[RutaArchivo] AS [RutaArchivo]
     FROM [dbo].[ObtenerFormularioAvaladoTiempo] AS [ObtenerFormularioAvaladoTiempo]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="SolicitudTareaPersona" EntityType="Self.SolicitudTareaPersona" store:Type="Views" store:Schema="dbo">
@@ -825,11 +842,22 @@ warning 6002: The table/view 'devHorasExtra.dbo.TareaPersona' does not have a pr
             <PropertyRef Name="Motivo" />
             <PropertyRef Name="idSolicitud" />
             <PropertyRef Name="idFormularioAvalado" />
+            <PropertyRef Name="FechaEnvio" />
+            <PropertyRef Name="HorasValidas" />
+            <PropertyRef Name="QUINCENA" />
+            <PropertyRef Name="idFormularioTiempo" />
+            <PropertyRef Name="Estado" />
           </Key>
           <Property Name="Email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Motivo" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="idSolicitud" Type="Int32" Nullable="false" />
           <Property Name="idFormularioAvalado" Type="Int32" Nullable="false" />
+          <Property Name="FechaEnvio" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="HorasValidas" Type="Int32" Nullable="false" />
+          <Property Name="QUINCENA" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="idFormularioTiempo" Type="Int32" Nullable="false" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <Property Name="RutaArchivo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="FORMULARIO_SOLICITUD_TAREAS">
           <Key>
@@ -1055,6 +1083,12 @@ warning 6002: The table/view 'devHorasExtra.dbo.TareaPersona' does not have a pr
           <EntitySetMapping Name="ObtenerFormularioAvaladoTiempo">
             <EntityTypeMapping TypeName="HorasExtraModel.ObtenerFormularioAvaladoTiempo">
               <MappingFragment StoreEntitySet="ObtenerFormularioAvaladoTiempo">
+                <ScalarProperty Name="RutaArchivo" ColumnName="RutaArchivo" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="idFormularioTiempo" ColumnName="idFormularioTiempo" />
+                <ScalarProperty Name="QUINCENA" ColumnName="QUINCENA" />
+                <ScalarProperty Name="HorasValidas" ColumnName="HorasValidas" />
+                <ScalarProperty Name="FechaEnvio" ColumnName="FechaEnvio" />
                 <ScalarProperty Name="idFormularioAvalado" ColumnName="idFormularioAvalado" />
                 <ScalarProperty Name="idSolicitud" ColumnName="idSolicitud" />
                 <ScalarProperty Name="Motivo" ColumnName="Motivo" />

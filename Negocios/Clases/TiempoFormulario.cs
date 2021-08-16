@@ -22,7 +22,7 @@ namespace Negocios.Clases
                     string res = tiempo.CrearFormularioTiempo(new FORMULARIOS_TIEMPO()
                     {
                        idFormularioAvalado = formulario.idFormularioAvalado,
-                       HorasValidas = formulario.Horas,
+                       HorasValidas = formulario.HorasValidas,
                        QUINCENA = formulario.Quincena,
                        Estado = false
                     });
@@ -52,12 +52,12 @@ namespace Negocios.Clases
             }
         }
 
-        public List<FORMULARIOS_TIEMPO> obtenerListaTareaPorPersona(string email, string motivo)
+        public List<ObtenerFormularioAvaladoTiempo> obtenerListaTareaPorPersona(string email)
         {
             try
             {
-                List<FORMULARIOS_TIEMPO> lista = new List<FORMULARIOS_TIEMPO>();
-                lista = tiempo.obternerFormularioTiempo(email,motivo);
+                List<ObtenerFormularioAvaladoTiempo> lista = new List<ObtenerFormularioAvaladoTiempo>();
+                lista = tiempo.obternerFormularioTiempo(email);
 
                 return lista;
 

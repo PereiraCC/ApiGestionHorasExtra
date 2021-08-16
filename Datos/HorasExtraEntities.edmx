@@ -158,6 +158,8 @@ warning 6002: The table/view 'devHorasExtra.dbo.FormulariosSolcitudPersona' does
             <PropertyRef Name="FechaEnvio" />
             <PropertyRef Name="Motivo" />
             <PropertyRef Name="Estado" />
+            <PropertyRef Name="Mes" />
+            <PropertyRef Name="TotalHoras" />
           </Key>
           <Property Name="Email" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="NombreCompleto" Type="nvarchar" MaxLength="100" Nullable="false" />
@@ -165,6 +167,9 @@ warning 6002: The table/view 'devHorasExtra.dbo.FormulariosSolcitudPersona' does
           <Property Name="FechaEnvio" Type="date" Nullable="false" />
           <Property Name="Motivo" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Estado" Type="bit" Nullable="false" />
+          <Property Name="Mes" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="TotalHoras" Type="int" Nullable="false" />
+          <Property Name="RutaArchivo" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'devHorasExtra.dbo.ObtenerFormularioAvaladoTiempo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -386,7 +391,10 @@ warning 6002: The table/view 'devHorasExtra.dbo.TareaPersona' does not have a pr
     [FormulariosSolcitudPersona].[idFormularioAvalado] AS [idFormularioAvalado], 
     [FormulariosSolcitudPersona].[FechaEnvio] AS [FechaEnvio], 
     [FormulariosSolcitudPersona].[Motivo] AS [Motivo], 
-    [FormulariosSolcitudPersona].[Estado] AS [Estado]
+    [FormulariosSolcitudPersona].[Estado] AS [Estado], 
+    [FormulariosSolcitudPersona].[Mes] AS [Mes], 
+    [FormulariosSolcitudPersona].[TotalHoras] AS [TotalHoras], 
+    [FormulariosSolcitudPersona].[RutaArchivo] AS [RutaArchivo]
     FROM [dbo].[FormulariosSolcitudPersona] AS [FormulariosSolcitudPersona]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="ObtenerFormularioAvaladoTiempo" EntityType="Self.ObtenerFormularioAvaladoTiempo" store:Type="Views" store:Schema="dbo">
@@ -780,6 +788,8 @@ warning 6002: The table/view 'devHorasExtra.dbo.TareaPersona' does not have a pr
             <PropertyRef Name="FechaEnvio" />
             <PropertyRef Name="Motivo" />
             <PropertyRef Name="Estado" />
+            <PropertyRef Name="Mes" />
+            <PropertyRef Name="TotalHoras" />
           </Key>
           <Property Name="Email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="NombreCompleto" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
@@ -787,6 +797,9 @@ warning 6002: The table/view 'devHorasExtra.dbo.TareaPersona' does not have a pr
           <Property Name="FechaEnvio" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Motivo" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <Property Name="Mes" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="TotalHoras" Type="Int32" Nullable="false" />
+          <Property Name="RutaArchivo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="DocumentosEvidencias">
           <Key>
@@ -1008,6 +1021,9 @@ warning 6002: The table/view 'devHorasExtra.dbo.TareaPersona' does not have a pr
           <EntitySetMapping Name="FormulariosSolcitudPersona">
             <EntityTypeMapping TypeName="HorasExtraModel.FormulariosSolcitudPersona">
               <MappingFragment StoreEntitySet="FormulariosSolcitudPersona">
+                <ScalarProperty Name="RutaArchivo" ColumnName="RutaArchivo" />
+                <ScalarProperty Name="TotalHoras" ColumnName="TotalHoras" />
+                <ScalarProperty Name="Mes" ColumnName="Mes" />
                 <ScalarProperty Name="Estado" ColumnName="Estado" />
                 <ScalarProperty Name="Motivo" ColumnName="Motivo" />
                 <ScalarProperty Name="FechaEnvio" ColumnName="FechaEnvio" />

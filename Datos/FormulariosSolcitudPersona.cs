@@ -20,5 +20,8 @@ namespace Datos
         public System.DateTime FechaEnvio { get; set; }
         public string Motivo { get; set; }
         public bool Estado { get; set; }
+        public string Mes { get; set; }
+        public int TotalHoras { get; set; }
+        public string RutaArchivo { get; set; }
     }
 }

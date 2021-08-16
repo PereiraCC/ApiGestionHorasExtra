@@ -28,7 +28,7 @@
         <EntityTypeShape EntityType="HorasExtraModel.FormulariosSolcitudPersona" Width="1.5" PointX="3" PointY="6" />
         <EntityTypeShape EntityType="HorasExtraModel.DocumentosEvidencias" Width="1.5" PointX="5.375" PointY="6.25" />
         <EntityTypeShape EntityType="HorasExtraModel.ObtenerFormularioAvaladoTiempo" Width="1.5" PointX="7.375" PointY="7.75" />
-        <EntityTypeShape EntityType="HorasExtraModel.FORMULARIO_SOLICITUD_TAREAS" Width="1.5" PointX="4" PointY="0.5" />
+        <EntityTypeShape EntityType="HorasExtraModel.FORMULARIO_SOLICITUD_TAREAS" Width="1.5" PointX="2.125" PointY="0.5" IsExpanded="true" />
         <AssociationConnector Association="HorasExtraModel.FK_FormularioSolicitudPersona" />
         <EntityTypeShape EntityType="HorasExtraModel.SolicitudTareaPersona" Width="1.5" PointX="0.75" PointY="9.75" />
         <EntityTypeShape EntityType="HorasExtraModel.EvidenciasFuncionario" Width="1.5" PointX="3.375" PointY="9.75" />

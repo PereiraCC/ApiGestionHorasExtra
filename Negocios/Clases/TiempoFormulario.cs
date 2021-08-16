@@ -12,18 +12,19 @@ namespace Negocios.Clases
     {
         private FormularioTiempo tiempo = new FormularioTiempo();
 
-        public string CrearTarea(string email,  string movtivo, int hora, string quincena)
+        public string CrearFormularioTiempo(ModelFormularioTiempo formulario)
         {
             try
             {
-                if (tiempo.obternerFormularioTiempo(email,movtivo).Count !=0)
-                {
-                    int idpersona = tiempo.idFormularioAvalado(email,movtivo);
-                    string res = tiempo.CrearFormularioTiempo(email,movtivo, new FORMULARIOS_TIEMPO()
+                //if (tiempo.obternerFormularioTiempo(email,movtivo).Count !=0)
+                //{
+                    //int idpersona = tiempo.idFormularioAvalado(email,movtivo);
+                    string res = tiempo.CrearFormularioTiempo(new FORMULARIOS_TIEMPO()
                     {
-                       idFormularioAvalado=idpersona,
-                       HorasValidas=hora,
-                       QUINCENA = quincena
+                       idFormularioAvalado = formulario.idFormularioAvalado,
+                       HorasValidas = formulario.Horas,
+                       QUINCENA = formulario.Quincena,
+                       Estado = false
                     });
 
                     if (res.Equals("1"))
@@ -35,11 +36,11 @@ namespace Negocios.Clases
                         return res;
                     }
 
-                }
-                else
-                {
-                    return "La persona no existe";
-                }
+                //}
+                //else
+                //{
+                //    return "La persona no existe";
+                //}
 
 
 

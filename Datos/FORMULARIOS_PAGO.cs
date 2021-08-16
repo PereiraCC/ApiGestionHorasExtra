@@ -24,6 +24,7 @@ namespace Datos
         public int idFormularioTiempo { get; set; }
         public string Descripcion { get; set; }
         public string Monto { get; set; }
+        public bool Estado { get; set; }
     
         public virtual FORMULARIOS_TIEMPO FORMULARIOS_TIEMPO { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

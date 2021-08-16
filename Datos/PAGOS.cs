@@ -18,6 +18,7 @@ namespace Datos
         public int idFormularioPago { get; set; }
         public int idTipoPago { get; set; }
         public string Monto { get; set; }
+        public bool Estado { get; set; }
     
         public virtual FORMULARIOS_PAGO FORMULARIOS_PAGO { get; set; }
         public virtual TIPOSPAGO TIPOSPAGO { get; set; }

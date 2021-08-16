@@ -57,6 +57,7 @@
           <Property Name="idFormularioTiempo" Type="int" Nullable="false" />
           <Property Name="Descripcion" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Monto" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="FORMULARIOS_TIEMPO">
           <Key>
@@ -65,7 +66,8 @@
           <Property Name="idFormularioTiempo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="idFormularioAvalado" Type="int" Nullable="false" />
           <Property Name="HorasValidas" Type="int" Nullable="false" />
-          <Property Name="QUINCENA" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="QUINCENA" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="JORNADAS">
           <Key>
@@ -83,6 +85,7 @@
           <Property Name="idFormularioPago" Type="int" Nullable="false" />
           <Property Name="idTipoPago" Type="int" Nullable="false" />
           <Property Name="Monto" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="PERSONAS">
           <Key>
@@ -522,6 +525,7 @@ warning 6002: The table/view 'devHorasExtra.dbo.TareaPersona' does not have a pr
           <Property Name="Monto" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="FORMULARIOS_TIEMPO" Relationship="Self.FK_FormularioPagoFormularioTiempo" FromRole="FORMULARIOS_PAGO" ToRole="FORMULARIOS_TIEMPO" />
           <NavigationProperty Name="PAGOS" Relationship="Self.FK_PagoFormularioPago" FromRole="FORMULARIOS_PAGO" ToRole="PAGOS" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="FORMULARIOS_TIEMPO">
           <Key>
@@ -530,9 +534,10 @@ warning 6002: The table/view 'devHorasExtra.dbo.TareaPersona' does not have a pr
           <Property Name="idFormularioTiempo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="idFormularioAvalado" Type="Int32" Nullable="false" />
           <Property Name="HorasValidas" Type="Int32" Nullable="false" />
-          <Property Name="QUINCENA" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="QUINCENA" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="FORMULARIOS_AVALADOS" Relationship="Self.FK_FormularioTiempoFormularioAprobacion" FromRole="FORMULARIOS_TIEMPO" ToRole="FORMULARIOS_AVALADOS" />
           <NavigationProperty Name="FORMULARIOS_PAGO" Relationship="Self.FK_FormularioPagoFormularioTiempo" FromRole="FORMULARIOS_TIEMPO" ToRole="FORMULARIOS_PAGO" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="JORNADAS">
           <Key>
@@ -553,6 +558,7 @@ warning 6002: The table/view 'devHorasExtra.dbo.TareaPersona' does not have a pr
           <Property Name="Monto" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="FORMULARIOS_PAGO" Relationship="Self.FK_PagoFormularioPago" FromRole="PAGOS" ToRole="FORMULARIOS_PAGO" />
           <NavigationProperty Name="TIPOSPAGO" Relationship="Self.FK_PagoTipoPago" FromRole="PAGOS" ToRole="TIPOSPAGO" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="PERSONAS">
           <Key>
@@ -934,6 +940,7 @@ warning 6002: The table/view 'devHorasExtra.dbo.TareaPersona' does not have a pr
           <EntitySetMapping Name="FORMULARIOS_PAGO">
             <EntityTypeMapping TypeName="HorasExtraModel.FORMULARIOS_PAGO">
               <MappingFragment StoreEntitySet="FORMULARIOS_PAGO">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
                 <ScalarProperty Name="idFormularioPago" ColumnName="idFormularioPago" />
                 <ScalarProperty Name="idFormularioTiempo" ColumnName="idFormularioTiempo" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
@@ -944,6 +951,7 @@ warning 6002: The table/view 'devHorasExtra.dbo.TareaPersona' does not have a pr
           <EntitySetMapping Name="FORMULARIOS_TIEMPO">
             <EntityTypeMapping TypeName="HorasExtraModel.FORMULARIOS_TIEMPO">
               <MappingFragment StoreEntitySet="FORMULARIOS_TIEMPO">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
                 <ScalarProperty Name="idFormularioTiempo" ColumnName="idFormularioTiempo" />
                 <ScalarProperty Name="idFormularioAvalado" ColumnName="idFormularioAvalado" />
                 <ScalarProperty Name="HorasValidas" ColumnName="HorasValidas" />
@@ -963,6 +971,7 @@ warning 6002: The table/view 'devHorasExtra.dbo.TareaPersona' does not have a pr
           <EntitySetMapping Name="PAGOS">
             <EntityTypeMapping TypeName="HorasExtraModel.PAGOS">
               <MappingFragment StoreEntitySet="PAGOS">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
                 <ScalarProperty Name="idPago" ColumnName="idPago" />
                 <ScalarProperty Name="idFormularioPago" ColumnName="idFormularioPago" />
                 <ScalarProperty Name="idTipoPago" ColumnName="idTipoPago" />

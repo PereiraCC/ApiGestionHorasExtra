@@ -1,4 +1,5 @@
 ﻿using Datos;
+using Datos.Clases;
 using Datos.Models;
 using Negocios.Clases;
 using System;
@@ -13,31 +14,31 @@ namespace ApiHorasExtra.Controllers
     public class FormulariosTiempoController : ApiController
     {
         // Objeto de clase negocios
-        private AvaladosFormularios db = new AvaladosFormularios();
+        private TiempoFormulario db = new TiempoFormulario();
 
-        public List<FormulariosSolcitudPersona> GetFormulariosAvalados(string email)
-        {
-            try
-            {
-                return db.obtenerFormulariosAvaladosPorPersona(email);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
+        //public List<FormulariosSolcitudPersona> GetFormulariosAvalados(string email)
+        //{
+        //    try
+        //    {
+        //        return db.obtenerFormulariosAvaladosPorPersona(email);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw ex;
+        //    }
+        //}
 
         // POST: api/Tareas
         [ResponseType(typeof(ModelCrearFormularioAvalado))]
-        public IHttpActionResult PostTareas(ModelCrearFormularioAvalado formulario)
+        public IHttpActionResult PostTareas(ModelFormularioTiempo formulario)
         {
             try
             {
-                string resp = db.CrearFormularioAvalado(formulario);
+                string resp = db.CrearFormularioTiempo(formulario);
 
                 if (resp.Equals("1"))
                 {
-                    return CreatedAtRoute("DefaultApi", new { id = formulario.Motivo }, formulario);
+                    return CreatedAtRoute("DefaultApi", new { id = formulario.idFormularioTiempo }, formulario);
                 }
                 else if (resp.Equals("Tarea no existe"))
                 {

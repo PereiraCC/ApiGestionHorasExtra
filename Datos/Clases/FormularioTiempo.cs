@@ -9,12 +9,13 @@ namespace Datos.Clases
     public class FormularioTiempo
     {
         private HorasExtraEntities entities;
-
+        private FormulariosAvalados formulariosAvalados;
 
 
         public FormularioTiempo()
         {
             entities = new HorasExtraEntities();
+            formulariosAvalados = new FormulariosAvalados();
 
         }
 
@@ -43,36 +44,19 @@ namespace Datos.Clases
             }
         }
 
-        public string CrearFormularioTiempo(string email, string motivo, FORMULARIOS_TIEMPO tarea)
+        public string CrearFormularioTiempo(FORMULARIOS_TIEMPO formulario)
         {
             try
             {
-                if (idFormularioAvalado(email, motivo) != 0)
+                entities.FORMULARIOS_TIEMPO.Add(formulario);
+                int res = entities.SaveChanges();
+                if (res == 1)
                 {
-                    try
-                    {
-                        entities.FORMULARIOS_TIEMPO.Add(tarea);
-                        int res = entities.SaveChanges();
-                        if (res == 1)
-                        {
-                            return "1";
-                        }
-                        else
-                        {
-                            return "0";
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-
-                        throw ex;
-                    }
-
+                    return formulariosAvalados.ActualizarFormularioAvalado(formulario.idFormularioAvalado);
                 }
                 else
                 {
-                    return "No existe Formulario avalado";
-
+                    return "0";
                 }
 
             }

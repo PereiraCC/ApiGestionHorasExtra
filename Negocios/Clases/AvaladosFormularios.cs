@@ -74,5 +74,22 @@ namespace Negocios.Clases
             }
         }
 
+        public List<FormulariosSolcitudPersona> obtenerFormulariosAvaladosPendientes(string email)
+        {
+            try
+            {
+                List<FormulariosSolcitudPersona> lista = new List<FormulariosSolcitudPersona>();
+                lista = tarea.obternerFormularioAvaladosPendientes(email);
+
+                return lista;
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
     }
 }

@@ -24,6 +24,7 @@ namespace Datos
         public int idFormularioAvalado { get; set; }
         public int HorasValidas { get; set; }
         public string QUINCENA { get; set; }
+        public bool Estado { get; set; }
     
         public virtual FORMULARIOS_AVALADOS FORMULARIOS_AVALADOS { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

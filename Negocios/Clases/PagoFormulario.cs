@@ -51,12 +51,12 @@ namespace Negocios.Clases
             }
         }
 
-        public List<FORMULARIOS_PAGO> obtenerListaTareaPorPersona(string email, string motivo)
+        public List<ObtenerFormularioPago> obtenerListaFormularioPagoPorPersona(string email)
         {
             try
             {
-                List<FORMULARIOS_PAGO> lista = new List<FORMULARIOS_PAGO>();
-                lista = pago.obternerFormularioPago(email, motivo);
+                List<ObtenerFormularioPago> lista = new List<ObtenerFormularioPago>();
+                lista = pago.obternerFormularioPago(email);
 
                 return lista;
 

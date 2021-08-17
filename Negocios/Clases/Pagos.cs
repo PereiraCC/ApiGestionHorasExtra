@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Datos;
 using Datos.Clases;
+using Datos.Models;
 
 namespace Negocios.Clases
 {
@@ -13,20 +14,19 @@ namespace Negocios.Clases
         private Pago pago = new Pago();
         private FormularioPago frmpago = new FormularioPago();
 
-        public string CrearPago(string email,string motivo, int idtipo, string monto)
+        public string CrearPago(ModelPago p)
         {
             try
             {
-                if (pago.obternerFormularioPago(email,motivo).Count !=0)
-                {
-                    int idpersona = pago.obterneridPago(email,motivo);
-                    string res = pago.CrearPago(email, motivo, new PAGOS()
+                //if (pago.obternerFormularioPago(email,motivo).Count !=0)
+                //{
+                    int idTipoPago = pago.obternerIdTipoPago(p.TipoPago);
+                    string res = pago.CrearPago(new PAGOS()
                     {
-                        idFormularioPago = idpersona,
-                        idTipoPago= idtipo,
-                        Monto = monto
-
-
+                        idFormularioPago = p.idFormularioPago,
+                        idTipoPago= idTipoPago,
+                        Monto = p.Monto,
+                        Estado = true
                     });
 
                     if (res.Equals("1"))
@@ -38,14 +38,11 @@ namespace Negocios.Clases
                         return res;
                     }
 
-                }
-                else
-                {
-                    return "Tarea no existe";
-                }
-
-
-
+                //}
+                //else
+                //{
+                //    return "Tarea no existe";
+                //}
             }
             catch (Exception ex)
             {

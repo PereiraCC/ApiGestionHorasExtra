@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -59,17 +60,17 @@ namespace Datos.Clases
 
         }
 
-        public List<FORMULARIOS_PAGO> obternerFormularioPago(string email,string motivo)
+        public List<ObtenerFormularioPago> obternerFormularioPago(string email)
         {
             try
             {
-                int id = tiempo.obterneridFormularioTiempo(email,motivo);
+                //int id = tiempo.obterneridFormularioTiempo(email,motivo);
 
-                List<FORMULARIOS_PAGO> model = new List<FORMULARIOS_PAGO>();
-                var query = from c in entities.FORMULARIOS_PAGO
-                            where c.idFormularioTiempo == id
+                List<ObtenerFormularioPago> model = new List<ObtenerFormularioPago>();
+                var query = from c in entities.ObtenerFormularioPago
+                            where c.Email == email
                             select c;
-                model = query.ToList<FORMULARIOS_PAGO>();
+                model = query.ToList<ObtenerFormularioPago>();
 
                 return model;
 
@@ -107,6 +108,32 @@ namespace Datos.Clases
             catch (Exception ex)
             {
 
+                throw ex;
+            }
+        }
+
+        public string ActualizarFormularioAvalado(int idFormularioPago)
+        {
+
+            try
+            {
+                FORMULARIOS_PAGO f = entities.FORMULARIOS_PAGO.First<FORMULARIOS_PAGO>(x => x.idFormularioPago == idFormularioPago);
+                f.Estado = true;
+
+                entities.Entry(f).State = EntityState.Modified;
+
+                int res = entities.SaveChanges();
+                if (res == 1)
+                {
+                    return "1";
+                }
+                else
+                {
+                    return "0";
+                }
+            }
+            catch (Exception ex)
+            {
                 throw ex;
             }
         }

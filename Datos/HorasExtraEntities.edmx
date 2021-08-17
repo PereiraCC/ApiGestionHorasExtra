@@ -200,6 +200,39 @@ warning 6002: The table/view 'devHorasExtra.dbo.ObtenerFormularioAvaladoTiempo' 
           <Property Name="RutaArchivo" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <!--Errors Found During Generation:
+warning 6002: The table/view 'devHorasExtra.dbo.ObtenerFormularioPago' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ObtenerFormularioPago">
+          <Key>
+            <PropertyRef Name="Email" />
+            <PropertyRef Name="NombreCompleto" />
+            <PropertyRef Name="Motivo" />
+            <PropertyRef Name="idSolicitud" />
+            <PropertyRef Name="idFormularioAvalado" />
+            <PropertyRef Name="FechaEnvio" />
+            <PropertyRef Name="HorasValidas" />
+            <PropertyRef Name="QUINCENA" />
+            <PropertyRef Name="idFormularioTiempo" />
+            <PropertyRef Name="Estado" />
+            <PropertyRef Name="Descripcion" />
+            <PropertyRef Name="Monto" />
+            <PropertyRef Name="idFormularioPago" />
+          </Key>
+          <Property Name="Email" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="NombreCompleto" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Motivo" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="idSolicitud" Type="int" Nullable="false" />
+          <Property Name="idFormularioAvalado" Type="int" Nullable="false" />
+          <Property Name="FechaEnvio" Type="date" Nullable="false" />
+          <Property Name="HorasValidas" Type="int" Nullable="false" />
+          <Property Name="QUINCENA" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="idFormularioTiempo" Type="int" Nullable="false" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+          <Property Name="RutaArchivo" Type="nvarchar" MaxLength="100" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Monto" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="idFormularioPago" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
 warning 6002: The table/view 'devHorasExtra.dbo.SolicitudTareaPersona' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="SolicitudTareaPersona">
           <Key>
@@ -424,6 +457,24 @@ warning 6002: The table/view 'devHorasExtra.dbo.TareaPersona' does not have a pr
     [ObtenerFormularioAvaladoTiempo].[Estado] AS [Estado], 
     [ObtenerFormularioAvaladoTiempo].[RutaArchivo] AS [RutaArchivo]
     FROM [dbo].[ObtenerFormularioAvaladoTiempo] AS [ObtenerFormularioAvaladoTiempo]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ObtenerFormularioPago" EntityType="Self.ObtenerFormularioPago" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ObtenerFormularioPago].[Email] AS [Email], 
+    [ObtenerFormularioPago].[NombreCompleto] AS [NombreCompleto], 
+    [ObtenerFormularioPago].[Motivo] AS [Motivo], 
+    [ObtenerFormularioPago].[idSolicitud] AS [idSolicitud], 
+    [ObtenerFormularioPago].[idFormularioAvalado] AS [idFormularioAvalado], 
+    [ObtenerFormularioPago].[FechaEnvio] AS [FechaEnvio], 
+    [ObtenerFormularioPago].[HorasValidas] AS [HorasValidas], 
+    [ObtenerFormularioPago].[QUINCENA] AS [QUINCENA], 
+    [ObtenerFormularioPago].[idFormularioTiempo] AS [idFormularioTiempo], 
+    [ObtenerFormularioPago].[Estado] AS [Estado], 
+    [ObtenerFormularioPago].[RutaArchivo] AS [RutaArchivo], 
+    [ObtenerFormularioPago].[Descripcion] AS [Descripcion], 
+    [ObtenerFormularioPago].[Monto] AS [Monto], 
+    [ObtenerFormularioPago].[idFormularioPago] AS [idFormularioPago]
+    FROM [dbo].[ObtenerFormularioPago] AS [ObtenerFormularioPago]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="SolicitudTareaPersona" EntityType="Self.SolicitudTareaPersona" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -780,6 +831,7 @@ warning 6002: The table/view 'devHorasExtra.dbo.TareaPersona' does not have a pr
           </AssociationSet>
           <EntitySet Name="SolicitudTareaPersona" EntityType="HorasExtraModel.SolicitudTareaPersona" />
           <EntitySet Name="EvidenciasFuncionario" EntityType="HorasExtraModel.EvidenciasFuncionario" />
+          <EntitySet Name="ObtenerFormularioPago" EntityType="HorasExtraModel.ObtenerFormularioPago" />
         </EntityContainer>
         <EntityType Name="TareaPersona">
           <Key>
@@ -924,6 +976,37 @@ warning 6002: The table/view 'devHorasExtra.dbo.TareaPersona' does not have a pr
           <Property Name="RutaDocumento" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="idPersona" Type="Int32" Nullable="false" />
           <Property Name="Estado" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ObtenerFormularioPago">
+          <Key>
+            <PropertyRef Name="Email" />
+            <PropertyRef Name="NombreCompleto" />
+            <PropertyRef Name="Motivo" />
+            <PropertyRef Name="idSolicitud" />
+            <PropertyRef Name="idFormularioAvalado" />
+            <PropertyRef Name="FechaEnvio" />
+            <PropertyRef Name="HorasValidas" />
+            <PropertyRef Name="QUINCENA" />
+            <PropertyRef Name="idFormularioTiempo" />
+            <PropertyRef Name="Estado" />
+            <PropertyRef Name="Descripcion" />
+            <PropertyRef Name="Monto" />
+            <PropertyRef Name="idFormularioPago" />
+          </Key>
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NombreCompleto" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Motivo" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="idSolicitud" Type="Int32" Nullable="false" />
+          <Property Name="idFormularioAvalado" Type="Int32" Nullable="false" />
+          <Property Name="FechaEnvio" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="HorasValidas" Type="Int32" Nullable="false" />
+          <Property Name="QUINCENA" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="idFormularioTiempo" Type="Int32" Nullable="false" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <Property Name="RutaArchivo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Monto" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="idFormularioPago" Type="Int32" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1135,6 +1218,26 @@ warning 6002: The table/view 'devHorasExtra.dbo.TareaPersona' does not have a pr
                 <ScalarProperty Name="HoraInicial" ColumnName="HoraInicial" />
                 <ScalarProperty Name="Motivo" ColumnName="Motivo" />
                 <ScalarProperty Name="idEvidencia" ColumnName="idEvidencia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ObtenerFormularioPago">
+            <EntityTypeMapping TypeName="HorasExtraModel.ObtenerFormularioPago">
+              <MappingFragment StoreEntitySet="ObtenerFormularioPago">
+                <ScalarProperty Name="idFormularioPago" ColumnName="idFormularioPago" />
+                <ScalarProperty Name="Monto" ColumnName="Monto" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="RutaArchivo" ColumnName="RutaArchivo" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="idFormularioTiempo" ColumnName="idFormularioTiempo" />
+                <ScalarProperty Name="QUINCENA" ColumnName="QUINCENA" />
+                <ScalarProperty Name="HorasValidas" ColumnName="HorasValidas" />
+                <ScalarProperty Name="FechaEnvio" ColumnName="FechaEnvio" />
+                <ScalarProperty Name="idFormularioAvalado" ColumnName="idFormularioAvalado" />
+                <ScalarProperty Name="idSolicitud" ColumnName="idSolicitud" />
+                <ScalarProperty Name="Motivo" ColumnName="Motivo" />
+                <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

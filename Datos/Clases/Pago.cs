@@ -18,19 +18,19 @@ namespace Datos.Clases
 
         }
 
-        public string CrearPago(string email, string motivo, PAGOS tarea)
+        public string CrearPago(PAGOS pago)
         {
             try
             {
-                if (pagos.obternerFormularioPago(email, motivo).Count != 0)
-                {
+                //if (pagos.obternerFormularioPago(email, motivo).Count != 0)
+                //{
                     try
                     {
-                        entities.PAGOS.Add(tarea);
+                        entities.PAGOS.Add(pago);
                         int res = entities.SaveChanges();
                         if (res == 1)
                         {
-                            return "1";
+                            return pagos.ActualizarFormularioAvalado(pago.idFormularioPago);
                         }
                         else
                         {
@@ -43,12 +43,12 @@ namespace Datos.Clases
                         throw ex;
                     }
 
-                }
-                else
-                {
-                    return "Persona no existe";
+                //}
+                //else
+                //{
+                //    return "Persona no existe";
 
-                }
+                //}
 
             }
             catch (Exception ex)
@@ -83,26 +83,25 @@ namespace Datos.Clases
         }
 
 
-        public int obterneridPago(string email, string motivo)
+        public int obternerIdTipoPago(string nombre)
         {
             try
             {
-                int id = pagos.obterneridFormularioPago(email, motivo);
-
-                List<PAGOS> model = new List<PAGOS>();
-                var query = from c in entities.PAGOS
-                            where c.idFormularioPago == id
+                List<TIPOSPAGO> model = new List<TIPOSPAGO>();
+                var query = from c in entities.TIPOSPAGO
+                            where c.Descripcion == nombre
                             select c;
-                model = query.ToList<PAGOS>();
+                model = query.ToList<TIPOSPAGO>();
 
-                int id1 = 0;
-
-                foreach(PAGOS t in model)
+                foreach(TIPOSPAGO t in model)
                 {
-                    id1 = t.idFormularioPago;
+                    if (t.Descripcion.Equals(nombre))
+                    {
+                        return t.idTipoPago;
+                    }
                 }
 
-                return id1;
+                return 0;
             }
             catch (Exception ex)
             {

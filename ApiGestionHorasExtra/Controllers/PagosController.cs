@@ -11,34 +11,34 @@ using System.Web.Http.Description;
 
 namespace ApiHorasExtra.Controllers
 {
-    public class FormulariosPagosController : ApiController
+    public class PagosController : ApiController
     {
         // Objeto de clase negocios
-        private PagoFormulario db = new PagoFormulario();
+        private Pagos db = new Pagos();
 
-        public List<ObtenerFormularioPago> GetFormulariosPago(string email)
-        {
-            try
-            {
-                return db.obtenerListaFormularioPagoPorPersona(email);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
+        //public List<ObtenerFormularioPago> GetFormulariosPago(string email)
+        //{
+        //    try
+        //    {
+        //        return db.obtenerListaFormularioPagoPorPersona(email);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw ex;
+        //    }
+        //}
 
         // POST: api/Tareas
-        [ResponseType(typeof(ModelFormularioPago))]
-        public IHttpActionResult PostFormulariosPago(ModelFormularioPago formulario)
+        [ResponseType(typeof(ModelPago))]
+        public IHttpActionResult PostPagos(ModelPago pago)
         {
             try
             {
-                string resp = db.CrearFormularioPago(formulario);
+                string resp = db.CrearPago(pago);
 
                 if (resp.Equals("1"))
                 {
-                    return CreatedAtRoute("DefaultApi", new { id = formulario.idFormularioPago }, formulario);
+                    return CreatedAtRoute("DefaultApi", new { id = pago.idFormularioPago }, pago);
                 }
                 else if (resp.Equals("Tarea no existe"))
                 {
